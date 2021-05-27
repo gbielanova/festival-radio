@@ -16,6 +16,7 @@ function Dashboard({ code }) {
     const [search, setSearch] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [playingTrack, setPlayingTrack] = useState();
+    const [premium, setPremium] = useState(false);
 
     function chooseTrack(track) {
         setPlayingTrack(track);
@@ -25,6 +26,7 @@ function Dashboard({ code }) {
     useEffect(() => {
         if (!accessToken) return;
         spotifyApi.setAccessToken(accessToken);
+        spotifyApi.getMe().then(res => { if (res.body.product !== 'open') { setPremium(true) } });
     }, [accessToken])
 
     useEffect(() => {
@@ -69,8 +71,13 @@ function Dashboard({ code }) {
                 ))}
             </div>
             <div>
-                <Player accessToken={accessToken} trackUri={playingTrack?.uri} />
+                {
+                    (premium) ?
+                        <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> :
+                        <p>Player available only for premium users </p>
+                }
             </div>
+
         </div>
 
     );
