@@ -1,0 +1,23 @@
+.sidebar {
+  flex: 0.3;
+  background-color: #040404;
+  color: white;
+  padding: 10px;
+}
+
+.playlists {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.playlist {
+  cursor: pointer;
+  padding: 5px 0;
+  transition: 200ms color ease-in;
+  color: grey;
+}
+
+.playlist:hover {
+  color: white;
+}

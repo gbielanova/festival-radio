@@ -11,14 +11,17 @@ function Player({ accessToken, trackUri }) {
     return (
         < SpotifyPlayer
             token={accessToken}
-            showSaveIcon
             callback={
                 state => {
                     if (!state.isPlaying) setPlay(false);
                 }
             }
             play={play}
-            uris={trackUri ? [trackUri] : []} />
+            uris={trackUri ? [trackUri] : []}
+            styles={{
+                bgColor: '#282828',
+                color: '#fff',
+            }} />
     );
 }
 
