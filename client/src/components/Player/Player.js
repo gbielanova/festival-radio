@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import SpotifyPlayer from "react-spotify-web-playback"
+import { useDataLayerValue } from '../../DataLayer';
 
-function Player({ accessToken, trackUri }) {
+function Player({ trackUri }) {
+    const [{ accessToken }] = useDataLayerValue();
+
     const [play, setPlay] = useState(false);
 
     useEffect(() => setPlay(true), [trackUri]);

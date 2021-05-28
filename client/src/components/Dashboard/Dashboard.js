@@ -1,5 +1,4 @@
-import { useState, useEffect } from 'react';
-import useAuth from '../../useAuth';
+import { useEffect } from 'react';
 // import TrackSearchResult from './TrackSearchResult';
 import Sidebar from '../Sidebar/Sidebar';
 import Main from '../Main/Main';
@@ -20,7 +19,6 @@ function Dashboard() {
     // const [search, setSearch] = useState("");
     // const [searchResults, setSearchResults] = useState([]);
     // const [playingTrack, setPlayingTrack] = useState();
-    const [premium, setPremium] = useState(false);
 
     // function chooseTrack(track) {
     //     setPlayingTrack(track);
@@ -30,8 +28,20 @@ function Dashboard() {
     useEffect(() => {
         if (!accessToken) return;
         spotifyApi.setAccessToken(accessToken);
-        spotifyApi.getMe().then(res => { if (res.body.product !== 'open') { setPremium(true) } });
-    }, [accessToken])
+        spotifyApi.getMe().then(res => {
+            dispatch({
+                type: "SET_USER",
+                user: res.body,
+            });
+
+            if (res.body.product !== 'open') {
+                dispatch({
+                    type: "SET_PREMIUM",
+                    premium: true,
+                });
+            }
+        });
+    }, [accessToken, dispatch])
 
     // useEffect(() => {
     //     if (!search) return setSearchResults([]);
@@ -66,7 +76,7 @@ function Dashboard() {
                 <Sidebar />
                 <Main />
             </section>
-            <Footer premium={premium} accessToken={accessToken} />
+            <Footer />
         </div >
     );
 }

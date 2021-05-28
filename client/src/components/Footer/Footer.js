@@ -1,9 +1,12 @@
 import React from 'react';
 import './Footer.css';
 import Player from '../Player/Player';
+import { useDataLayerValue } from '../../DataLayer';
 
 
-function Footer({ premium, accessToken }) {
+function Footer() {
+    const [{ accessToken, premium }] = useDataLayerValue();
+
     return (
         <footer className="footer">
             {

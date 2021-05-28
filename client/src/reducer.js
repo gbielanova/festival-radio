@@ -5,8 +5,7 @@ export const initialState = {
     refreshToken: null,
     expiresIn: null,
     premium: false,
-    spotify: null,
-    player: null,
+    playingTrack: null,
 }
 
 const reducer = (state, action) => {
@@ -44,15 +43,10 @@ const reducer = (state, action) => {
                 ...state,
                 premium: action.premium,
             };
-        case "SET_SPOTIFY":
+        case "SET_PLAYING_TRACK":
             return {
                 ...state,
-                spotify: action.spotify,
-            };
-        case "SET_PLAYER":
-            return {
-                ...state,
-                player: action.player,
+                playingTrack: action.playingTrack,
             };
         default:
             return state;

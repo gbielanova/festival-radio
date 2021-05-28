@@ -6,7 +6,7 @@ import { useDataLayerValue } from './DataLayer';
 const urlCode = new URLSearchParams(window.location.search).get('code');
 
 function App() {
-  const [{ accessToken }, dispatch] = useDataLayerValue();
+  const [{ accessToken }] = useDataLayerValue();
 
   useAuth(urlCode);
 
