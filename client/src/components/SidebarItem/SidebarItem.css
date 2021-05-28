@@ -1,0 +1,22 @@
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebarItem {
+  display: flex;
+  align-items: center;
+  color: grey;
+  height: 40px;
+  cursor: pointer;
+  transition: 200ms color ease-in;
+}
+
+.sidebarItem:hover {
+  color: white;
+}
+
+.sidebarItem__icon {
+  margin-right: 10px;
+}
