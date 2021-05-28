@@ -6,6 +6,7 @@ import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 import SpotifyWebApi from 'spotify-web-api-node';
 import './Dashboard.css';
+import { useDataLayerValue } from '../../DataLayer';
 
 
 const clientId = 'afa5c44e65bc40928f489b6bff9d91fe';
@@ -14,8 +15,8 @@ const spotifyApi = new SpotifyWebApi({
     clientId: clientId,
 });
 
-function Dashboard({ code }) {
-    const accessToken = useAuth(code);
+function Dashboard() {
+    const [{ accessToken }, dispatch] = useDataLayerValue();
     // const [search, setSearch] = useState("");
     // const [searchResults, setSearchResults] = useState([]);
     // const [playingTrack, setPlayingTrack] = useState();

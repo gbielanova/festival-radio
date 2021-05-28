@@ -1,28 +1,38 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import axios from 'axios';
+import { useDataLayerValue } from './DataLayer';
+
 
 const serverLoginURL = 'http://localhost:3001/login';
 const serverRefreshURL = 'http://localhost:3001/refresh';
 
 function useAuth(code) {
-    const [accessToken, setAccessToken] = useState();
-    const [refreshToken, setRefreshToken] = useState();
-    const [expiresIn, setExpiresIn] = useState();
+    const [{ accessToken, refreshToken, expiresIn }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
         axios.post(serverLoginURL, {
             code,
         })
             .then(res => {
-                setAccessToken(res.data.accessToken);
-                setRefreshToken(res.data.refreshToken);
-                setExpiresIn(res.data.expiresIn);
+                dispatch({
+                    type: "SET_ACCESS_TOKEN",
+                    accessToken: res.data.accessToken,
+                });
+                dispatch({
+                    type: "SET_REFRESH_TOKEN",
+                    refreshToken: res.data.refreshToken,
+                });
+                dispatch({
+                    type: "SET_EXPIRES_IN",
+                    expiresIn: res.data.expiresIn,
+                });
+
                 window.history.pushState({}, null, '/');
             })
             .catch(() => {
                 window.location = '/';
             });
-    }, [code]);
+    }, [code, dispatch]);
 
     useEffect(() => {
         if (!refreshToken || !expiresIn) return;
@@ -32,8 +42,14 @@ function useAuth(code) {
                 refreshToken,
             })
                 .then(res => {
-                    setAccessToken(res.data.accessToken);
-                    setExpiresIn(res.data.expiresIn);
+                    dispatch({
+                        type: "SET_ACCESS_TOKEN",
+                        accessToken: res.data.accessToken,
+                    });
+                    dispatch({
+                        type: "SET_EXPIRES_IN",
+                        expiresIn: res.data.expiresIn,
+                    });
                 })
                 .catch(() => {
                     window.location = '/';
@@ -41,7 +57,7 @@ function useAuth(code) {
         }, (expiresIn - 60) * 1000);
 
         return () => clearInterval(interval);
-    }, [refreshToken, expiresIn]);
+    }, [refreshToken, expiresIn, dispatch]);
 
     return accessToken;
 }
