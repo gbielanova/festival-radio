@@ -11,14 +11,18 @@ function Sidebar(props) {
 
     return (
         <aside className='sidebar'>
-            <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
-            <SidebarItem title="Home" Icon={HomeIcon} />
-            <SidebarItem title="Search" Icon={SearchIcon} />
-            <h3 className='sidebar__title'>PLAYLISTS</h3>
+            <div className='sidebar__header'>
+                <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
+                <SidebarItem title="Home" Icon={HomeIcon} />
+                <SidebarItem title="Search" Icon={SearchIcon} />
+                <h3 className='sidebar__title'>PLAYLISTS</h3>
+            </div>
+
 
             { playlists?.map(paylist => (
                 <SidebarItem title={paylist.name} key={paylist.id} />
             ))}
+
         </aside>
     );
 }
