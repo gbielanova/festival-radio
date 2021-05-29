@@ -15,6 +15,10 @@ function Sidebar() {
             type: "SET_PLAYLIST",
             playingPlaylist: playlist,
         });
+        dispatch({
+            type: "SET_PLAYING_TRACK",
+            playingTrack: playlist.tracks.items[0].track,
+        });
     }
     return (
         <aside className='sidebar'>

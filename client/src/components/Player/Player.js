@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
-import SpotifyPlayer from "react-spotify-web-playback"
+import SpotifyPlayer from "react-spotify-web-playback";
 import { useDataLayerValue } from '../../DataLayer';
 
-function Player({ trackUri }) {
-    const [{ accessToken }] = useDataLayerValue();
+function Player() {
+    const [{ accessToken, playingPlaylist, playingTrack }] = useDataLayerValue();
 
     const [play, setPlay] = useState(false);
 
-    useEffect(() => setPlay(true), [trackUri]);
+    useEffect(() => setPlay(true), [playingTrack]);
 
     if (!accessToken) return null;
+
+    const playingUris = playingPlaylist?.tracks.items.map((item) => item.track.uri);
 
     return (
         < SpotifyPlayer
@@ -20,7 +22,8 @@ function Player({ trackUri }) {
                 }
             }
             play={play}
-            uris={trackUri ? [trackUri] : []}
+            uris={playingPlaylist ? playingUris : []}
+            offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
             styles={{
                 bgColor: '#282828',
                 color: '#fff',
