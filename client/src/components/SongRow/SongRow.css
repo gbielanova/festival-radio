@@ -16,6 +16,7 @@
   cursor: pointer;
   background-color: black;
   opacity: 0.8;
+  box-shadow: 0 4px 60px black;
 }
 
 .songRow__img {
