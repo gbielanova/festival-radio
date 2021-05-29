@@ -1,6 +1,8 @@
 export const initialState = {
     user: null,
     playlists: [],
+    playingPlaylist: null,
+    activeSidebarItem: null,
     accessToken: null,
     refreshToken: null,
     expiresIn: null,
@@ -22,6 +24,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 playlists: [...state.playlists, action.playlist],
+            };
+        case 'SET_PLAYLIST':
+            return {
+                ...state,
+                playingPlaylist: action.playlist,
             };
         case 'SET_ACCESS_TOKEN':
             return {

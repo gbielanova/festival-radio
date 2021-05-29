@@ -29,9 +29,9 @@ function useAuth(code) {
 
                 window.history.pushState({}, null, '/');
             })
-            .catch(() => {
-                window.location = '/';
-            });
+        // .catch(() => {
+        //     window.location = '/';
+        // });
     }, [code, dispatch]);
 
     useEffect(() => {

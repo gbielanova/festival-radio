@@ -6,9 +6,16 @@ import SearchIcon from '@material-ui/icons/Search';
 import { useDataLayerValue } from '../../DataLayer';
 import spotifyLogo from '../../resources/img/spotifyLogo.svg';
 
-function Sidebar(props) {
-    const [{ playlists }] = useDataLayerValue();
 
+function Sidebar() {
+    const [{ playlists }, dispatch] = useDataLayerValue();
+
+    function choosePlaylist(playlist) {
+        dispatch({
+            type: "SET_PLAYLIST",
+            playingPlaylist: playlist.id,
+        });
+    }
     return (
         <aside className='sidebar'>
             <div className='sidebar__header'>
@@ -20,7 +27,7 @@ function Sidebar(props) {
 
 
             { playlists?.map(paylist => (
-                <SidebarItem title={paylist.name} key={paylist.id} />
+                <SidebarItem playlist={paylist} key={paylist.id} choosePlaylist={choosePlaylist} />
             ))}
 
         </aside>
