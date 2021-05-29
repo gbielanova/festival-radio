@@ -1,0 +1,29 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.songRow {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin: 5px 0;
+}
+
+.songRow__img {
+  height: 50px;
+}
+
+.songRow__info {
+  margin-left: 10px;
+}
+
+.songRow__name {
+  font-size: 16px;
+}
+
+.songRow__artist {
+  font-size: 12px;
+  font-weight: 400;
+}

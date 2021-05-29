@@ -28,7 +28,7 @@ const reducer = (state, action) => {
         case 'SET_PLAYLIST':
             return {
                 ...state,
-                playingPlaylist: action.playlist,
+                playingPlaylist: action.playingPlaylist,
             };
         case 'SET_ACCESS_TOKEN':
             return {

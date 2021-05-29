@@ -1,11 +1,46 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 .main {
   flex: 0.7;
   background: linear-gradient(rgb(91, 87, 115), rgba(0, 0, 0, 1));
   color: white;
+  overflow: scroll;
 }
 
-.songs {
-  list-style: none;
+.main::-webkit-scrollbar {
+  display: none;
+}
+
+.main__info {
+  display: flex;
+  align-items: flex-end;
+  height: 30vh;
+  min-height: 100px;
   padding: 10px;
-  margin: 0;
+}
+
+.main__logo {
+  height: 100%;
+  box-shadow: 0 4px 60px black;
+}
+
+.main__infoText {
+  margin-left: 20px;
+}
+
+.main__name {
+  font-size: 30px;
+}
+
+.main__description {
+  font-size: 12px;
+  font-weight: 300;
+}
+
+.main__songs {
+  padding: 10px;
 }

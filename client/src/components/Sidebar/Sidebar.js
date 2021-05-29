@@ -13,7 +13,7 @@ function Sidebar() {
     function choosePlaylist(playlist) {
         dispatch({
             type: "SET_PLAYLIST",
-            playingPlaylist: playlist.id,
+            playingPlaylist: playlist,
         });
     }
     return (
