@@ -9,6 +9,13 @@
   align-items: center;
   color: white;
   margin: 5px 0;
+  padding: 5px;
+}
+
+.songRow:hover {
+  cursor: pointer;
+  background-color: black;
+  opacity: 0.8;
 }
 
 .songRow__img {

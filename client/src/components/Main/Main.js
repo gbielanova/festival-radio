@@ -3,8 +3,15 @@ import './Main.css';
 import { useDataLayerValue } from '../../DataLayer';
 import SongRow from '../SongRow/SongRow';
 
-function Main(props) {
-    const [{ playingPlaylist }] = useDataLayerValue();
+function Main() {
+    const [{ playingPlaylist }, dispatch] = useDataLayerValue();
+
+    const playSong = (track) => {
+        dispatch({
+            type: "SET_PLAYING_TRACK",
+            playingTrack: track,
+        });
+    }
 
     return (
         <main className="main">
@@ -18,7 +25,7 @@ function Main(props) {
 
             <div className="main__songs">
                 {playingPlaylist?.tracks.items.map(item => (
-                    <SongRow track={item.track} key={item.track.id} />
+                    <SongRow track={item.track} key={item.track.id} playSong={playSong} />
                 ))}
             </div>
         </main>

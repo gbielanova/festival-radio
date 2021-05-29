@@ -5,14 +5,13 @@ import { useDataLayerValue } from '../../DataLayer';
 
 
 function Footer() {
-    const [{ accessToken, premium }] = useDataLayerValue();
+    const [{ accessToken, playingTrack, premium }] = useDataLayerValue();
 
     return (
         <footer className="footer">
             {
                 (premium) ?
-                    <Player accessToken={accessToken} /> :
-                    // <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> :
+                    <Player accessToken={accessToken} trackUri={playingTrack?.uri} /> :
                     <p>Player available only for premium users </p>
             }
         </footer>
