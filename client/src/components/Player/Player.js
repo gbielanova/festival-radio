@@ -7,27 +7,28 @@ function Player() {
 
     const [play, setPlay] = useState(false);
 
-    useEffect(() => setPlay(true), [playingTrack]);
+    useEffect(() => setPlay(true), [playingPlaylist, playingTrack]);
 
     if (!accessToken) return null;
 
     const playingUris = playingPlaylist?.tracks.items.map((item) => item.track.uri);
 
     return (
-        < SpotifyPlayer
-            token={accessToken}
-            callback={
-                state => {
-                    if (!state.isPlaying) setPlay(false);
-                }
-            }
-            play={play}
-            uris={playingPlaylist ? playingUris : []}
-            offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
-            styles={{
-                bgColor: '#282828',
-                color: '#fff',
-            }} />
+        // < SpotifyPlayer
+        //     token={accessToken}
+        //     callback={
+        //         state => {
+        //             if (!state.isPlaying) setPlay(false);
+        //         }
+        //     }
+        //     play={play}
+        //     uris={playingPlaylist ? playingUris : []}
+        //     offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
+        //     styles={{
+        //         bgColor: '#282828',
+        //         color: '#fff',
+        //     }} />
+        <> </>
     );
 }
 

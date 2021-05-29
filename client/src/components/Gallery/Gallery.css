@@ -1,0 +1,17 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.gallery {
+  flex: 0.7;
+  background-color: #121212;
+  color: #b3b3b3;
+  overflow: scroll;
+}
+
+.galleryItems {
+  display: flex;
+  flex-wrap: wrap;
+}

@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import Sidebar from '../Sidebar/Sidebar';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import Gallery from '../Gallery/Gallery';
 import SpotifyWebApi from 'spotify-web-api-node';
 import './Dashboard.css';
 import { useDataLayerValue } from '../../DataLayer';
@@ -15,7 +16,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Dashboard() {
-    const [{ accessToken }, dispatch] = useDataLayerValue();
+    const [{ accessToken, playingPlaylist }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
         if (!accessToken) return;
@@ -36,7 +37,7 @@ function Dashboard() {
             }
         });
 
-        ['7p1LpBuLf9PmgSBUETVVp3', '5CoK6RaL736tRsPpv3yTe6', '37i9dQZF1EppukfMttZO5c'].map(id => (
+        ['7p1LpBuLf9PmgSBUETVVp3', '5CoK6RaL736tRsPpv3yTe6', '37i9dQZF1EppukfMttZO5c', '2Y89KNJyNefO0heawqqQxA'].map(id => (
             spotifyApi.getPlaylist(id).then(res => {
                 dispatch({
                     type: "SET_PLAYLISTS",
@@ -58,7 +59,8 @@ function Dashboard() {
         <div>
             <section className="dashboard">
                 <Sidebar />
-                <Main />
+                {playingPlaylist ? <Main /> : <Gallery />}
+
             </section>
             <Footer />
         </div >
