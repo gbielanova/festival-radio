@@ -18,6 +18,11 @@
   transition: 200ms color ease-in;
 }
 
+.playlistItem:hover {
+  background-color: rgba(46, 45, 45, 0.404);
+  color: white;
+}
+
 .playlistItem__img {
   width: 90%;
   border-radius: 10%;
