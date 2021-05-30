@@ -15,3 +15,8 @@
   min-height: 500px;
   padding-bottom: 50px;
 }
+
+.main__wrapper {
+  flex: 0.7;
+  overflow: scroll;
+}

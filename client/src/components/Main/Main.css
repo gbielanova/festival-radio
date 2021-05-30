@@ -5,7 +5,6 @@
 }
 
 .main {
-  flex: 0.7;
   color: white;
   overflow: scroll;
 }
