@@ -13,15 +13,11 @@ const scopes = [
     'user-modify-playback-state',
 ]
 
-// uncomment after save to storage works
-// const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&show_dialog=true&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`;
-const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`;
-
-
 function Login() {
     return (
         <div>
-            <a href={AUTH_URL}>Login with Spotify</a>
+            {/* Should be here to reflect change in localStorage, will not work without refresh if href outside return */}
+            <a href={`https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&show_dialog=${localStorage.getItem('loggedIn') !== 'true'}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`}>Login with Spotify</a>
         </div>
     );
 }

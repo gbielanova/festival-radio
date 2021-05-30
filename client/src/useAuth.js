@@ -28,10 +28,8 @@ function useAuth(code) {
                 });
 
                 window.history.pushState({}, null, '/');
+                localStorage.setItem('loggedIn', true);
             })
-        // .catch(() => {
-        //     window.location = '/';
-        // });
     }, [code, dispatch]);
 
     useEffect(() => {
