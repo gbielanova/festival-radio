@@ -2,7 +2,6 @@ import React from 'react';
 import './SidebarItem.css';
 import { useDataLayerValue } from '../../DataLayer';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
-import PauseIcon from '@material-ui/icons/Pause';
 
 function SidebarItem({ title, playlist, Icon, choosePlaylist }) {
     const [{ playingPlaylist }] = useDataLayerValue();

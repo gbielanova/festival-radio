@@ -24,8 +24,8 @@ function Main() {
             </div>
 
             <div className="main__songs">
-                {playingPlaylist?.tracks.items.map(item => (
-                    <SongRow track={item.track} key={item.track.id} playSong={playSong} />
+                {playingPlaylist?.tracks?.items.map((item, index) => (
+                    < SongRow track={item.track} key={index} playSong={playSong} />
                 ))}
             </div>
         </main>
