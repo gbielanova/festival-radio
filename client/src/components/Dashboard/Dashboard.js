@@ -37,7 +37,10 @@ function Dashboard() {
             }
         });
 
-        ['7p1LpBuLf9PmgSBUETVVp3', '5CoK6RaL736tRsPpv3yTe6', '37i9dQZF1EppukfMttZO5c', '2Y89KNJyNefO0heawqqQxA'].map(id => (
+        ['5VVoHEuqZBs6kATsF7nLTS', '6ihAiSvGzfRkBZFf8F2vL9', '3iQL47pHJ9YeAbSeXv4Zbp', 
+        '5unwHGGK3FdtuCuREik2xv', '13maJFCugAJicrteZ095TD', '5R8E4lPChZ7l6dNrihfFQS', 
+        '3ivG9ZxjtnERiJWQtyJYFC', '0t1rNc9h9MnPVJcotS0Bng', '4f9CawPddxzOUSJUKj68TQ', 
+        '6bHiAAxR0CLBOozXSyGfrz', '3KxnnQenLSYEMNuTh4gsxm'].map(id => (
             spotifyApi.getPlaylist(id).then(res => {
                 dispatch({
                     type: "SET_PLAYLISTS",
