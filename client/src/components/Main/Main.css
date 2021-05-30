@@ -16,7 +16,7 @@
 .main__info {
   display: flex;
   align-items: flex-end;
-  height: 30vh;
+  height: 20vh;
   min-height: 100px;
   padding: 10px;
   position: sticky;
