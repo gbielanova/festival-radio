@@ -14,21 +14,22 @@ function Player() {
     const playingUris = playingPlaylist?.tracks.items.map((item) => item.track.uri);
 
     return (
-        // < SpotifyPlayer
-        //     token={accessToken}
-        //     callback={
-        //         state => {
-        //             if (!state.isPlaying) setPlay(false);
-        //         }
-        //     }
-        //     play={play}
-        //     uris={playingPlaylist ? playingUris : []}
-        //     offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
-        //     styles={{
-        //         bgColor: '#282828',
-        //         color: '#fff',
-        //     }} />
-        <> </>
+        < SpotifyPlayer
+            token={accessToken}
+            callback={
+                state => {
+                    if (!state.isPlaying) setPlay(false);
+                }
+            }
+            play={play}
+            uris={playingPlaylist ? playingUris : []}
+            offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
+            styles={{
+                bgColor: '#282828',
+                color: '#fff',
+                trackNameColor: '#fff',
+                sliderColor: '#1ed760',
+            }} />
     );
 }
 
