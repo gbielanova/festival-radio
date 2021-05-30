@@ -21,6 +21,7 @@
 .playlistItem:hover {
   background-color: rgba(46, 45, 45, 0.404);
   color: white;
+  cursor: pointer;
 }
 
 .playlistItem__img {

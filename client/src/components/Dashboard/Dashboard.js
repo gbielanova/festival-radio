@@ -73,8 +73,6 @@ function Dashboard() {
                 })
             ));
 
-
-
     }, [accessToken, dispatch])
 
     return (

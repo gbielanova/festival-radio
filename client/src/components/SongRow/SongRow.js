@@ -9,11 +9,9 @@ function SongRow({ track, playSong }) {
 
     if (!track) return (<></>);
 
-    let activeTrack = playingTrack === track;
-
     return (
-        <div className={`songRow ${activeTrack && 'songRow-active'}`} onClick={() => playSong(track)}>
-            {activeTrack && <PlayArrowIcon className='songRow__icon' />}
+        <div className={`songRow ${(playingTrack === track) ? 'songRow-active' : ''}`} onClick={() => playSong(track)}>
+            {(playingTrack === track) && <PlayArrowIcon className='songRow__icon' />}
             <img className='songRow__img' src={track.album?.images[0]?.url || playingPlaylist?.image} alt="" />
             <div className='songRow__info'>
                 <h3 className='songRow__name'>{track.name}</h3>
