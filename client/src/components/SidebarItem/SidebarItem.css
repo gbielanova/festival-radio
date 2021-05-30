@@ -14,7 +14,7 @@
   padding: 10px;
 }
 
-.sidebarItem:hover {
+.sidebarItem:hover :not(:last-child) {
   color: white;
 }
 
@@ -23,6 +23,20 @@
   margin-left: -10px;
 }
 
-.sideItem-active {
+.sidebarItem-active :not(:last-child) {
   color: white;
+}
+
+.sidebarItem__text {
+  flex-grow: 1;
+  margin-right: 10px;
+}
+
+.sidebarItem__text:hover {
+  cursor: pointer;
+  color: white;
+}
+
+.sidebarItem__favorite {
+  margin-left: auto;
 }

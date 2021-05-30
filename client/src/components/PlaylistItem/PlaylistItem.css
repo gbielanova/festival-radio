@@ -6,7 +6,6 @@
 
 .playlistItem {
   width: 30%;
-  /* height: 30%; */
   margin: 10px;
   background-color: black;
   display: flex;
@@ -17,11 +16,6 @@
   border-radius: 5%;
   box-shadow: 0 4px 60px black;
   transition: 200ms color ease-in;
-}
-
-.playlistItem:hover {
-  background-color: #282828;
-  cursor: pointer;
 }
 
 .playlistItem__img {

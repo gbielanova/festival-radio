@@ -1,6 +1,7 @@
 export const initialState = {
     user: null,
     playlists: [],
+    favorites: localStorage.getItem('favorites')?.split(',') && [],
     playingPlaylist: null,
     activeSidebarItem: null,
     accessToken: null,
@@ -11,7 +12,7 @@ export const initialState = {
 }
 
 const reducer = (state, action) => {
-    console.log(action);
+    // console.log(action);
 
     switch (action.type) {
         case 'SET_USER': {
@@ -54,6 +55,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 playingTrack: action.playingTrack,
+            };
+        case "SET_FAVORITES":
+            return {
+                ...state,
+                favorites: action.favorites,
             };
         default:
             return state;
