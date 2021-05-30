@@ -40,3 +40,7 @@
 .sidebarItem__favorite {
   margin-left: auto;
 }
+
+.sidebarItem-favorite {
+  color: #1ed760;
+}

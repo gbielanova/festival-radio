@@ -31,5 +31,6 @@
 
 .sidebar__title {
   margin-top: 20px;
+  margin-left: 10px;
   border-bottom: 1px white solid;
 }

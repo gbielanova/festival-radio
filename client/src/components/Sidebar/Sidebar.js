@@ -8,7 +8,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 function Sidebar() {
-    const [{ playlists }, dispatch] = useDataLayerValue();
+    const [{ playlists, favorites }, dispatch] = useDataLayerValue();
 
     function choosePlaylist(playlist) {
         dispatch({
@@ -20,18 +20,24 @@ function Sidebar() {
             playingTrack: playlist.tracks.items[0].track,
         });
     }
+
     return (
         <aside className='sidebar'>
             <div className='sidebar__header'>
                 <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
                 <SidebarItem title="Home" Icon={HomeIcon} />
-                <h3 className='sidebar__title'>FAVORITE</h3>
-                <h3 className='sidebar__title'>PLAYLISTS</h3>
             </div>
 
+            <h3 className='sidebar__title'>FAVORITE</h3>
+            {playlists?.map(playlist => (
+                favorites.indexOf(playlist.id) !== -1 &&
+                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} cName='sidebarItem-favorite' />
+            ))}
 
-            { playlists?.map(paylist => (
-                <SidebarItem playlist={paylist} key={paylist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} />
+            <h3 className='sidebar__title'>PLAYLISTS</h3>
+            { playlists?.map(playlist => (
+                favorites.indexOf(playlist.id) === -1 &&
+                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} />
             ))}
 
         </aside>

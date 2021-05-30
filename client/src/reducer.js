@@ -1,7 +1,7 @@
 export const initialState = {
     user: null,
     playlists: [],
-    favorites: localStorage.getItem('favorites')?.split(',') && [],
+    favorites: localStorage.getItem('favorites')?.split(',') || [],
     playingPlaylist: null,
     activeSidebarItem: null,
     accessToken: null,
