@@ -58,6 +58,8 @@ function Dashboard() {
             '3ivG9ZxjtnERiJWQtyJYFC', '0t1rNc9h9MnPVJcotS0Bng', '4f9CawPddxzOUSJUKj68TQ',
             '6bHiAAxR0CLBOozXSyGfrz', '3KxnnQenLSYEMNuTh4gsxm'].map(id => (
                 spotifyApi.getPlaylist(id).then(res => {
+                    console.log(`${id} playlist resonse: `, res);
+
                     dispatch({
                         type: "SET_PLAYLISTS",
                         playlist: {
