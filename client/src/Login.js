@@ -13,7 +13,7 @@ const scopes = [
     'user-modify-playback-state',
 ]
 
-const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`;
+const AUTH_URL = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&show_dialog=true&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`;
 
 
 function Login() {
