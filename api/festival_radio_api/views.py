@@ -23,3 +23,14 @@ class FerstivalArtistsItemViewSet(viewsets.ModelViewSet):
 
     serializer_class = serializers.FerstivalArtistsItemSerializer
     queryset = models.FerstivalArtistsItem.objects.all()
+
+
+class PlaylistItemViewSet(viewsets.ModelViewSet):
+    """Handle creating, reading and updating playlist items"""
+
+    serializer_class = serializers.PlaylistItemSerializer
+    queryset = models.PlaylistItem.objects.all()
+
+    def perform_create(self, serializer):
+        """Set playlist_id to generated playlist"""
+        serializer.save(playlist_id=1)

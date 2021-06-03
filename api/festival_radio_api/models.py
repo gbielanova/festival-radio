@@ -34,4 +34,16 @@ class FerstivalArtistsItem(models.Model):
 
     def __str__(self):
         """Return the model as a atring"""
-        return f"{festival_id} - {artist_id}"
+        return f"{self.festival_id} - {self.artist_id}"
+
+
+class PlaylistItem(models.Model):
+    """Database model for paylist"""
+
+    festival_id = models.ForeignKey(FestivalItem, on_delete=models.CASCADE)
+    artists = models.CharField(max_length=1000)
+    playlist_id = models.CharField(max_length=255)
+
+    def __str__(self):
+        """Return the model as a atring"""
+        return self.playlist_id

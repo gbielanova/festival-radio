@@ -25,3 +25,12 @@ class FerstivalArtistsItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FerstivalArtistsItem
         fields = ("id", "festival_id", "artist_id")
+
+
+class PlaylistItemSerializer(serializers.ModelSerializer):
+    """Serializes playlist item"""
+
+    class Meta:
+        model = models.PlaylistItem
+        fields = ("id", "festival_id", "artists", "playlist_id")
+        extra_kwargs = {"playlist_id": {"read_only": True}}

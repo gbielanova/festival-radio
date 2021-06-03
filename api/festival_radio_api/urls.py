@@ -9,6 +9,7 @@ router = DefaultRouter()
 router.register("festival", views.FestivalItemViewSet)
 router.register("artist", views.ArtistItemViewSet)
 router.register("festival-artists", views.FerstivalArtistsItemViewSet)
+router.register("playlist", views.PlaylistItemViewSet)
 
 urlpatterns = [
     path("", include(router.urls)),
