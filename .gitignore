@@ -136,3 +136,8 @@ dmypy.json
 # End of https://www.gitignore.io/api/python,vagrant
 eb-package.zip
 static/
+api/festival_radio_api/.idea/festival_radio_api.iml
+api/festival_radio_api/.idea/misc.xml
+api/festival_radio_api/.idea/modules.xml
+api/festival_radio_api/.idea/vcs.xml
+api/festival_radio_api/.idea/inspectionProfiles/profiles_settings.xml
