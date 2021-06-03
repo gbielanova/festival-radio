@@ -17,3 +17,11 @@ class ArtistItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.ArtistItem
         fields = ("id", "name")
+
+
+class FerstivalArtistsItemSerializer(serializers.ModelSerializer):
+    """Serializes festival artists item"""
+
+    class Meta:
+        model = models.FerstivalArtistsItem
+        fields = ("id", "festival_id", "artist_id")
