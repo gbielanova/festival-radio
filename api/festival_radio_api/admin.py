@@ -3,3 +3,4 @@ from django.db import models
 from festival_radio_api import models
 
 admin.site.register(models.FestivalItem)
+admin.site.register(models.ArtistItem)

@@ -14,3 +14,13 @@ class FestivalItem(models.Model):
     def __str__(self):
         """Return the model as a atring"""
         return self.name
+
+
+class ArtistItem(models.Model):
+    """Database model for artists in the system"""
+
+    name = models.CharField(max_length=255, unique=True)
+
+    def __str__(self):
+        """Return the model as a atring"""
+        return self.name

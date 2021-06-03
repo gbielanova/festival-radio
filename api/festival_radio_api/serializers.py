@@ -9,3 +9,11 @@ class FestivalItemSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.FestivalItem
         fields = ("id", "name", "logo_url")
+
+
+class ArtistItemSerializer(serializers.ModelSerializer):
+    """Serializes artist item"""
+
+    class Meta:
+        model = models.ArtistItem
+        fields = ("id", "name")

@@ -9,3 +9,10 @@ class FestivalItemViewSet(viewsets.ModelViewSet):
 
     serializer_class = serializers.FestivalItemSerializer
     queryset = models.FestivalItem.objects.all()
+
+
+class ArtistItemViewSet(viewsets.ModelViewSet):
+    """Handle creating, reading and updating festival items"""
+
+    serializer_class = serializers.ArtistItemSerializer
+    queryset = models.ArtistItem.objects.all()
