@@ -43,6 +43,8 @@ class PlaylistItem(models.Model):
     festival_id = models.ForeignKey(FestivalItem, on_delete=models.CASCADE)
     artists = models.CharField(max_length=1000)
     playlist_id = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    spotify_token = models.CharField(max_length=255)
 
     def __str__(self):
         """Return the model as a atring"""

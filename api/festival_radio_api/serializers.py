@@ -32,5 +32,5 @@ class PlaylistItemSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = models.PlaylistItem
-        fields = ("id", "festival_id", "artists", "playlist_id")
+        fields = ("id", "festival_id", "artists", "playlist_id", "name", "spotify_token")
         extra_kwargs = {"playlist_id": {"read_only": True}}
