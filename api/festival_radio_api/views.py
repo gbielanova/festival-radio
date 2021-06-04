@@ -35,10 +35,18 @@ class PlaylistItemViewSet(viewsets.ModelViewSet):
 
     def perform_create(self, serializer):
         """Set playlist_id to generated playlist"""
-        token = "BQD2xTqof9ekNesZCcNjE5l0516uBjGr65F2l6rG2KXLRZEOINYpeY0KTVJe7Mo7A05qU_29eYtcc2p4K83eDSZsdj2Q_aK9tTjLJgbFzvQ9nk1oXj3mdy_TdbuUiyomeD3fX43dmw9HOyzlFPZNN2J9Yr7N5j-prlQlVMZM0VIeOxeUpU6evhkPVRX31Ib91dt69u9SOHyeXEcD4mhhQa9nwyLbyhuw8omiZru4CAfWR0jrkgMTHqW9AKt7EAcn9DCLqE1KGKsRtVGxnBKdrw"
+        artist_ids = [int(id) for id in self.request.data["artists"].split(",")]
+        artists = []
+
+        for artist_id in artist_ids:
+            artist_name = models.ArtistItem.objects.filter(id=artist_id).values_list(
+                "name", flat=True
+            )
+            if artist_name.count() > 0:
+                artists.append(artist_name[0])
 
         id = spotify.generate_playlist(
-            token, "playlist from api", "Offspring", "Nirvana", "TNMK"
+            self.request.data["spotify_token"], self.request.data["name"], artists
         )
 
         serializer.save(playlist_id=id)

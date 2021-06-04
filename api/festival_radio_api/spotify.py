@@ -9,7 +9,7 @@ ADD_PLAYLISTS_URL = "https://api.spotify.com/v1/users"
 ADD_SONGS_URL = "https://api.spotify.com/v1/playlists"
 
 
-def generate_playlist(token, name, *artists_list):
+def generate_playlist(token, name, artists):
 
     headers = {
         "Accept": "application/json",
@@ -20,8 +20,6 @@ def generate_playlist(token, name, *artists_list):
     get_user_response = requests.get(ME_URL, headers=headers)
     get_user_response.raise_for_status
     user_id = get_user_response.json()["id"]
-
-    artists = list(artists_list)
 
     song_uris = []
     for artist in artists:
