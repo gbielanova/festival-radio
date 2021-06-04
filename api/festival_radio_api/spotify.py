@@ -1,42 +1,58 @@
-import spotipy
-from spotipy.oauth2 import SpotifyOAuth
+import json
 import random
+import requests
 
-OAUTH_AUTHORIZE_URL = "https://accounts.spotify.com/authorize"
-OAUTH_TOKEN_URL = "https://accounts.spotify.com/api/token"
+ME_URL = "https://api.spotify.com/v1/me"
+SEARCH_URL = "https://api.spotify.com/v1/search"
+ARTISTS_URL = "https://api.spotify.com/v1/artists"
+ADD_PLAYLISTS_URL = "https://api.spotify.com/v1/users"
+ADD_SONGS_URL = "https://api.spotify.com/v1/playlists"
 
-scope = "playlist-modify-private"
 
+def generate_playlist(token, name, *artists_list):
 
-def generate_playlist(name, *artists_list):
+    headers = {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+        "Authorization": f"Bearer {token}",
+    }
 
-    print("******start")
-
-    sp = spotipy.Spotify(auth_manager=SpotifyOAuth(scope=scope))
-
-    print("******auth passed")
-
-    user_id = sp.current_user()["id"]
-    print(f"******user_id - {user_id}")
+    get_user_response = requests.get(ME_URL, headers=headers)
+    get_user_response.raise_for_status
+    user_id = get_user_response.json()["id"]
 
     artists = list(artists_list)
 
-    print(f"******artists - {artists}")
-
-    song_urls = []
+    song_uris = []
     for artist in artists:
-        artist_id = sp.search(artist, type="artist")["artists"]["items"][0]["id"]
-        top_songs = sp.artist_top_tracks(artist_id)
+        params = {"q": artist, "type": "artist"}
+        get_artist_response = requests.get(SEARCH_URL, headers=headers, params=params)
+        get_artist_response.raise_for_status()
+        artist_id = get_artist_response.json()["artists"]["items"][0]["id"]
+
+        get_top_songs_response = requests.get(
+            f"{ARTISTS_URL}/{artist_id}/top-tracks?market=ua", headers=headers
+        )
+        get_top_songs_response.raise_for_status()
+        top_songs = get_top_songs_response.json()
         for song in top_songs["tracks"]:
-            song_urls.append(song["uri"])
+            song_uris.append(song["uri"])
 
-    playlist = sp.user_playlist_create(user_id, name, False)
-    playlist_id = playlist["id"]
+    payload = {"name": name, "public": False}
+    create_playlist_response = requests.post(
+        f"{ADD_PLAYLISTS_URL}/{user_id}/playlists",
+        headers=headers,
+        data=json.dumps(payload),
+    )
+    create_playlist_response.raise_for_status()
+    playlist_id = create_playlist_response.json()["id"]
 
-    random.shuffle(song_urls)
+    random.shuffle(song_uris)
 
-    sp.playlist_add_items(playlist_id, song_urls)
+    add_songs_response = requests.post(
+        f'{ADD_SONGS_URL}/{playlist_id}/tracks?uris={",".join(song_uris)}',
+        headers=headers,
+    )
+    add_songs_response.raise_for_status()
 
     return playlist_id
-
-generate_playlist('my playlist', 'tnmk', 'louna')
