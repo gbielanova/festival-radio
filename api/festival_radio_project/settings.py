@@ -28,7 +28,13 @@ DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 ALLOWED_HOSTS = ["ec2-52-51-232-161.eu-west-1.compute.amazonaws.com", "127.0.0.1"]
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = ("http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com",)
+CORS_ORIGIN_WHITELIST = (
+    "http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com",
+    "http://127.0.0.1:8000",
+    "http://localhost:3000",
+)
+
+CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
 
 # Application definition
 
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -52,7 +59,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "festival_radio_project.urls"
