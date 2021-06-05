@@ -28,7 +28,7 @@ DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 ALLOWED_HOSTS = ["ec2-52-51-232-161.eu-west-1.compute.amazonaws.com", "127.0.0.1"]
 CORS_ORIGIN_ALLOW_ALL = False
 
-CORS_ORIGIN_WHITELIST = ("ec2-52-51-232-161.eu-west-1.compute.amazonaws.com",)
+CORS_ORIGIN_WHITELIST = ("http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com",)
 
 # Application definition
 
