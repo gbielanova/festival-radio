@@ -9,6 +9,7 @@ export const initialState = {
     expiresIn: null,
     premium: false,
     playingTrack: null,
+    festival: localStorage.getItem('selectedFestival') || null,
 }
 
 const reducer = (state, action) => {
@@ -60,6 +61,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 favorites: action.favorites,
+            };
+        case "SET_FESTIVAL":
+            return {
+                ...state,
+                festival: action.festival,
             };
         default:
             return state;

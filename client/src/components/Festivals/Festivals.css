@@ -1,0 +1,54 @@
+.festivals {
+  background-color: black;
+  height: 100vh;
+  min-height: 500px;
+}
+
+.carousel {
+  height: 70vh;
+  width: 100%;
+  min-height: 350px;
+  margin: auto;
+}
+
+.CarouselItem {
+  height: 70vh;
+  min-height: 350px;
+}
+
+.carousel__block {
+  height: 60vh;
+  min-height: 300px;
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+}
+
+.carousel__image {
+  max-width: 80%;
+  height: 80%;
+  object-fit: scale-down;
+  margin-top: auto;
+}
+
+.carousel__text {
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.carousel__button {
+  font-size: 30px;
+  padding: 10px 15px;
+  background-color: white;
+  border: none;
+  border-radius: 10px;
+  transition: 200ms ease-in;
+  cursor: pointe;
+}
+
+.carousel__block:hover .carousel__button {
+  transform: scale(1.2);
+}

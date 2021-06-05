@@ -21,11 +21,22 @@ function Sidebar() {
         });
     }
 
+    function handleClick() {
+
+        console.log('click')
+
+        dispatch({
+            type: "SET_FESTIVAL",
+            festival: null,
+        });
+        localStorage.removeItem('selectedFestival');
+    }
+
     return (
         <aside className='sidebar'>
             <div className='sidebar__header'>
                 <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
-                <SidebarItem title="Home" Icon={HomeIcon} />
+                <SidebarItem title="Home" Icon={HomeIcon} onClick={handleClick} />
             </div>
 
             <h3 className='sidebar__title'>FAVORITE</h3>
