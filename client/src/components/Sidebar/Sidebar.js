@@ -8,7 +8,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 
 
 function Sidebar() {
-    const [{ playlists, favorites }, dispatch] = useDataLayerValue();
+    const [{ playlists, favorites, festival }, dispatch] = useDataLayerValue();
 
     function choosePlaylist(playlist) {
         dispatch({
@@ -35,7 +35,10 @@ function Sidebar() {
     return (
         <aside className='sidebar'>
             <div className='sidebar__header'>
-                <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
+                <div className="sidebar__logos">
+                    <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
+                    <img className='sidebar__logo' src={festival.logo_url} alt="Festival logo"></img>
+                </div>
                 <SidebarItem title="Home" Icon={HomeIcon} onClick={handleClick} />
             </div>
 

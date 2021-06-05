@@ -30,7 +30,7 @@ function SidebarItem({ title, playlist, Icon, choosePlaylist, Favorite, cName, o
         <div className={`sidebarItem ${activePlaylist ? 'sidebarItem-active' : ''}`} >
             {activePlaylist && <PlayArrowIcon />}
             {Icon && <Icon className='sidebarItem__icon' />}
-            {Icon ? <h4 className='sidebarItem__text' onClick={onClick}>{title}</h4> : <p className='sidebarItem__text' onClick={handlePlaylistClick}>{playlist.name}</p>}
+            {Icon ? <p className='sidebarItem__text' onClick={onClick}>{title}</p> : <p className='sidebarItem__text' onClick={handlePlaylistClick}>{playlist.name}</p>}
             {Favorite && <Favorite className={`sidebarItem__favorite ${cName || ''}`} onClick={handleFavoriteClick} />}
         </div>
     );

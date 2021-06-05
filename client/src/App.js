@@ -10,8 +10,6 @@ function App() {
   const [{ accessToken, festival }] = useDataLayerValue();
   useAuth(urlCode);
 
-  console.log(accessToken, festival);
-
   return (!festival) ? <Festivals /> :
     accessToken ? <Dashboard /> : <Login />;
 }

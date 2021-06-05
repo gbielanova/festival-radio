@@ -20,12 +20,13 @@ function Festivals() {
         fetchData();
     }, []);
 
-    function handleClick(id) {
+    function handleClick(item) {
+        console.log(item)
         dispatch({
             type: "SET_FESTIVAL",
-            festival: id,
+            festival: item,
         });
-        localStorage.setItem('selectedFestival', id);
+        localStorage.setItem('selectedFestival', JSON.stringify(item));
     }
 
     return (
@@ -68,7 +69,7 @@ function Festivals() {
                 {
                     fests.map(
                         (item) =>
-                            <article key={item.id} className='carousel__block' onClick={() => handleClick(item.id)}>
+                            <article key={item.id} className='carousel__block' onClick={() => handleClick(item)}>
                                 <img src={item.logo_url} alt="logo" className='carousel__image' />
                                 <button className='carousel__button'>Get <span className='carousel__text'>{item.name}</span> boost!</button>
                             </article>
