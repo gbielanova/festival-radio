@@ -26,7 +26,9 @@ SECRET_KEY = "dhx5wn$*jhu7zz1x6*t@r&xhi*c#*9juv(*e%dqvp^%w94c=qo"
 DEBUG = bool(int(os.environ.get("DEBUG", 1)))
 
 ALLOWED_HOSTS = ["ec2-52-51-232-161.eu-west-1.compute.amazonaws.com", "127.0.0.1"]
+CORS_ORIGIN_ALLOW_ALL = False
 
+CORS_ORIGIN_WHITELIST = ("ec2-52-51-232-161.eu-west-1.compute.amazonaws.com",)
 
 # Application definition
 
@@ -39,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "rest_framework",
     "festival_radio_api",
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
@@ -49,6 +52,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
 ]
 
 ROOT_URLCONF = "festival_radio_project.urls"
