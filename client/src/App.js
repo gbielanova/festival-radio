@@ -26,13 +26,10 @@ function App() {
   // )
 
   return (
-    <>
-      {console.log(sessionStorage.getItem('state'), festival, accessToken)}
-      {(sessionStorage.getItem('state') === 'admin') ? <AdminDashboard /> :
-        festival ?
-          accessToken ? <Dashboard /> : <Login state='play' cName='spotify__login' text='Login with Spotify' />
-          : <Festivals />}
-    </>
+    (sessionStorage.getItem('state') === 'admin') ? <AdminDashboard /> :
+      festival ?
+        accessToken ? <Dashboard /> : <Login state='play' cName='spotify__login' text='Login with Spotify' />
+        : <Festivals />
   )
 
 }

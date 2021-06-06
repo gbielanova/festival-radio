@@ -3,10 +3,14 @@ import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 
 function AdminDashboard(props) {
-    const [{ accessToken }] = useDataLayerValue();
+    const [{ accessToken }, dispatch] = useDataLayerValue();
 
     function handleCLick() {
-        sessionStorage.removeItem('state')
+        sessionStorage.removeItem('state');
+        dispatch({
+            type: "SET_FESTIVAL",
+            user: null,
+        });
     }
 
     return (
