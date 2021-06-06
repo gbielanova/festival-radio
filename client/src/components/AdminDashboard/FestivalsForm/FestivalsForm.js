@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import './FestivalsForm.css';
 import axios from 'axios';
+import AddFestivalForm from '../AddFestivalForm/AddFestivalForm'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 
 function FestivalsForm(props) {
     const [fests, setFests] = useState([]);
     const [selection, setSelection] = useState("-1");
-    const [data, setData] = useState({
-        name: '',
-        logo_url: ''
-    });
 
     useEffect(() => {
         const fetchData = async () => {
@@ -25,15 +22,7 @@ function FestivalsForm(props) {
         setSelection(event.target.value);
     }
 
-    function handleFormChange(event) {
-        const newData = { ...data }
-        newData[event.target.id] = event.target.value
-        setData(newData)
-        console.log(newData)
-    }
-
-    function submitForm(event) {
-        event.preventDefault();
+    function submitFestivalForm(data) {
         axios.post(FestivalsUrl, {
             name: data.name,
             logo_url: data.logo_url
@@ -58,16 +47,7 @@ function FestivalsForm(props) {
                 </select>
             </label>
             {(+selection > 0) && <p>Show list of artists</p>}
-            {(+selection === 0) &&
-
-                <form onSubmit={(e) => submitForm(e)}>
-                    <input id='name' type="text" placeholder="Festival name" onChange={e => handleFormChange(e)} />
-                    <input id='logo_url' type="text" placeholder="Festival logo" onChange={e => handleFormChange(e)} />
-                    <button>Submit</button>
-                </form>
-
-
-            }
+            {(+selection === 0) && <AddFestivalForm onSubmit={submitFestivalForm} />}
         </div>
     );
 }

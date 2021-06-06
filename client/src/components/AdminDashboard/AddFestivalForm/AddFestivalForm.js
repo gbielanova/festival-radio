@@ -1,38 +1,32 @@
-import React, { Component } from 'react';
-import './FestivalsForm.css';
-import AddFestivalForm from '../AddFestivalForm/AddFestivalForm';
+import React, { useState } from 'react';
 
-class FestivalsForm extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { value: -1 };
+function AddFestivalForm(props) {
+    const [data, setData] = useState({
+        name: '',
+        logo_url: ''
+    });
 
-        this.handleChange = this.handleChange.bind(this);
+    function handleFormChange(event) {
+        const newData = { ...data }
+        newData[event.target.id] = event.target.value
+        setData(newData)
+        console.log(newData)
     }
 
-    handleChange(event) {
-        this.setState({ value: event.target.value });
+    function submitForm(event) {
+        event.preventDefault();
+        props.onSubmit(data)
     }
 
-    render() {
-        return (
-            <div>
-                <label>
-                    Select festival:
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        <option value="-1" disabled></option>
-                        <option value="0">Add new</option>
-                        {this.props.data.map(
-                            (item) =>
-                                <option value={item.id} key={item.id}>{item.name}</option>
-                        )}
-                    </select>
-                </label>
-                {(+this.state.value === 0) && <AddFestivalForm />}
-                {(+this.state.value > 0) && <p>Show list of artists</p>}
-            </div>
-        );
-    }
+    return (
+        <div>
+            <form onSubmit={(e) => submitForm(e)}>
+                <input id='name' type="text" placeholder="Festival name" onChange={e => handleFormChange(e)} />
+                <input id='logo_url' type="text" placeholder="Festival logo" onChange={e => handleFormChange(e)} />
+                <button>Submit</button>
+            </form>
+        </div>
+    );
 }
 
-export default FestivalsForm;
+export default AddFestivalForm;
