@@ -4,6 +4,7 @@ import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
 import Login from '../../Login'
 import { useDataLayerValue } from '../../DataLayer';
+import FestivalBlock from '../FestivalBlock/FestivalBlock'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 
@@ -31,10 +32,9 @@ function Festivals() {
 
     return (
         <div className='festivals'>
-            {/* !!!Return autoplay!!! */}
             <Carousel
                 className="carousel"
-                autoPlay={false}
+                autoPlay={true}
                 timer={500}
                 animation={'fade'}
                 indicators={true}
@@ -76,6 +76,12 @@ function Festivals() {
                     )
                 }
             </Carousel>
+            <section className="festivals__list">
+                {fests.map(
+                    (item) =>
+                        <FestivalBlock key={item.id} festival={item} chooseFestival={handleClick} />
+                )}
+            </section>
 
             {/* <Login /> */}
         </div>

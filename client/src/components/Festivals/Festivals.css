@@ -52,3 +52,10 @@
 .carousel__block:hover .carousel__button {
   transform: scale(1.2);
 }
+
+.festivals__list {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}
