@@ -29,6 +29,7 @@ function useAuth(code) {
 
                 window.history.pushState({}, null, '/');
                 sessionStorage.setItem('loggedIn', true);
+                sessionStorage.setItem('token', res.data.accessToken);
             })
     }, [code, dispatch]);
 
@@ -48,6 +49,7 @@ function useAuth(code) {
                         type: "SET_EXPIRES_IN",
                         expiresIn: res.data.expiresIn,
                     });
+                    sessionStorage.setItem('token', res.data.accessToken);
                 })
                 .catch(() => {
                     window.location = '/';

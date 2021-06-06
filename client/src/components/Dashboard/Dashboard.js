@@ -32,7 +32,13 @@ function Dashboard() {
             type: "SET_EXPIRES_IN",
             user: null,
         });
+        dispatch({
+            type: "SET_FESTIVAL",
+            user: null,
+        });
         sessionStorage.setItem('loggedIn', false);
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('selectedFestival');
     }
 
     useEffect(() => {

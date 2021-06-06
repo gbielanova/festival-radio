@@ -15,7 +15,7 @@
   padding: 10px;
   border-radius: 5%;
   box-shadow: 0 4px 60px black;
-  transition: 200ms color ease-in;
+  transition: 200ms ease-in;
 }
 
 .playlistItem:hover {

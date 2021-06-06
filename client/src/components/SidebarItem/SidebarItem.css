@@ -19,7 +19,7 @@
 }
 
 .sidebarItem__icon {
-  margin-right: 10px;
+  margin-right: 5px;
   margin-left: -10px;
 }
 
@@ -35,6 +35,10 @@
 .sidebarItem__text:hover {
   cursor: pointer;
   color: white;
+}
+
+.sidebarItem__title {
+  font-size: 20px;
 }
 
 .sidebarItem__favorite {

@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import './Festivals.css'
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
-import Login from '../../Login'
+import Login from '../Login/Login'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalBlock from '../FestivalBlock/FestivalBlock'
+import AdminDashboard from '../AdminDashboard/AdminDashboard'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 
@@ -32,6 +33,8 @@ function Festivals() {
 
     return (
         <div className='festivals'>
+            <Login text="Create new playlist" cName='festivals__login' state='admin' />
+
             <Carousel
                 className="carousel"
                 autoPlay={true}
@@ -82,8 +85,6 @@ function Festivals() {
                         <FestivalBlock key={item.id} festival={item} chooseFestival={handleClick} />
                 )}
             </section>
-
-            {/* <Login /> */}
         </div>
     );
 }

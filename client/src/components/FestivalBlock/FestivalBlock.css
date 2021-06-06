@@ -9,6 +9,7 @@
   margin: 10px;
   transition: 200ms ease-in;
   cursor: pointer;
+  box-shadow: 0 4px 40px grey;
 }
 
 .festivalBlock__logo {
@@ -19,4 +20,5 @@
 
 .festivalBlock:hover {
   transform: scale(1.2);
+  box-shadow: 0 4px 40px grey;
 }

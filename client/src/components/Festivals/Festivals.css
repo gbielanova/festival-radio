@@ -59,3 +59,19 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.festivals__login {
+  color: white;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 10px 30px;
+  text-decoration: none;
+  transition: 200ms ease-in;
+  z-index: 1;
+}
+
+.festivals__login:hover {
+  transform: scale(1.2);
+  font-weight: bold;
+}

@@ -4,7 +4,7 @@ export const initialState = {
     favorites: localStorage.getItem('favorites')?.split(',') || [],
     playingPlaylist: null,
     activeSidebarItem: null,
-    accessToken: null,
+    accessToken: sessionStorage.getItem('token') || null,
     refreshToken: null,
     expiresIn: null,
     premium: false,
