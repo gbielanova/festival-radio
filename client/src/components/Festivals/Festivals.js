@@ -5,7 +5,6 @@ import Carousel from 'react-material-ui-carousel'
 import Login from '../Login/Login'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalBlock from '../FestivalBlock/FestivalBlock'
-import AdminDashboard from '../AdminDashboard/AdminDashboard'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 
