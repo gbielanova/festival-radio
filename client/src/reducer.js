@@ -9,7 +9,7 @@ export const initialState = {
     expiresIn: null,
     premium: false,
     playingTrack: null,
-    festival: JSON.parse(localStorage.getItem('selectedFestival')) || null,
+    festival: JSON.parse(sessionStorage.getItem('selectedFestival')) || null,
 }
 
 const reducer = (state, action) => {

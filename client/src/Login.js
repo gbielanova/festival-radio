@@ -19,7 +19,7 @@ function Login() {
     return (
         <div>
             {/* Should be here to reflect change in localStorage, will not work without refresh if href outside return */}
-            <a href={`https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&show_dialog=${localStorage.getItem('loggedIn') !== 'true'}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`}>Login with Spotify</a>
+            <a href={`https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=code&show_dialog=${sessionStorage.getItem('loggedIn') !== 'true'}&redirect_uri=${redirectUri}&scope=${scopes.join('%20')}`}>Login with Spotify</a>
         </div>
     );
 }

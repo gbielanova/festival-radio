@@ -28,7 +28,7 @@ function useAuth(code) {
                 });
 
                 window.history.pushState({}, null, '/');
-                localStorage.setItem('loggedIn', true);
+                sessionStorage.setItem('loggedIn', true);
             })
     }, [code, dispatch]);
 

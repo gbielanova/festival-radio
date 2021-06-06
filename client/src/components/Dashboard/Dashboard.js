@@ -32,7 +32,7 @@ function Dashboard() {
             type: "SET_EXPIRES_IN",
             user: null,
         });
-        localStorage.setItem('loggedIn', false);
+        sessionStorage.setItem('loggedIn', false);
     }
 
     useEffect(() => {

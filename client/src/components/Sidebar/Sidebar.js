@@ -29,7 +29,7 @@ function Sidebar() {
             type: "SET_FESTIVAL",
             festival: null,
         });
-        localStorage.removeItem('selectedFestival');
+        sessionStorage.removeItem('selectedFestival');
     }
 
     return (

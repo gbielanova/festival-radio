@@ -26,7 +26,7 @@ function Festivals() {
             type: "SET_FESTIVAL",
             festival: item,
         });
-        localStorage.setItem('selectedFestival', JSON.stringify(item));
+        sessionStorage.setItem('selectedFestival', JSON.stringify(item));
     }
 
     return (
