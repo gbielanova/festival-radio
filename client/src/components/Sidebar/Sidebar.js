@@ -22,9 +22,6 @@ function Sidebar() {
     }
 
     function handleClick() {
-
-        console.log('click')
-
         dispatch({
             type: "SET_FESTIVAL",
             festival: null,

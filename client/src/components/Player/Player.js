@@ -30,7 +30,6 @@ function Player() {
                     if (!state.isPlaying) setPlay(false)
                     if (state?.track?.id !== playingTrack?.id) {
                         let track = playingPlaylist?.tracks.items.filter(item => item?.track.id === state?.track?.id)[0];
-                        console.log(track)
                         if (track)
                             dispatch({
                                 type: "SET_PLAYING_TRACK",

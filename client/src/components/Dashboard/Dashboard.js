@@ -64,7 +64,6 @@ function Dashboard() {
 
         axios.get(PlaylistsUrl)
             .then(res => {
-                console.log(festival);
                 let ids = res.data.filter(
                     (el) => el.festival_id === festival.id)
                     .map((el) => el.playlist_id);
@@ -85,8 +84,6 @@ function Dashboard() {
                 ));
             }
             )
-
-
     }, [accessToken, dispatch])
 
     return (

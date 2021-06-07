@@ -25,7 +25,7 @@ const reducer = (state, action) => {
         case 'SET_PLAYLISTS':
             return {
                 ...state,
-                playlists: action.playlists && [...state.playlists, action.playlist],
+                playlists: [...state.playlists, action.playlist],
             };
         case 'SET_PLAYLIST':
             return {
@@ -66,6 +66,7 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 festival: action.festival,
+                playlists: [],
             };
         default:
             return state;

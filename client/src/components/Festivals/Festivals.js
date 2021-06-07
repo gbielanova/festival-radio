@@ -22,16 +22,11 @@ function Festivals() {
     }, []);
 
     function handleClick(item) {
-        console.log(item)
         dispatch({
             type: "SET_FESTIVAL",
             festival: item,
         });
         sessionStorage.setItem('selectedFestival', JSON.stringify(item));
-        dispatch({
-            type: "SET_PLAYLISTS",
-            playlists: []
-        });
     }
 
     return (
