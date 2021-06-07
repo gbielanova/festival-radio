@@ -28,6 +28,10 @@ function Festivals() {
             festival: item,
         });
         sessionStorage.setItem('selectedFestival', JSON.stringify(item));
+        dispatch({
+            type: "SET_PLAYLISTS",
+            playlists: []
+        });
     }
 
     return (
