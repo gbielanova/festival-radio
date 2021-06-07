@@ -67,6 +67,8 @@ const reducer = (state, action) => {
                 ...state,
                 festival: action.festival,
                 playlists: [],
+                playingPlaylist: null,
+                playingTrack: null,
             };
         default:
             return state;
