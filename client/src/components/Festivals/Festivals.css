@@ -1,5 +1,6 @@
 .festivals {
   background-color: black;
+  min-height: 100vh;
 }
 
 .carousel {
@@ -30,6 +31,7 @@
   height: 80%;
   object-fit: scale-down;
   margin-top: auto;
+  padding: 20px;
 }
 
 .carousel__text {
