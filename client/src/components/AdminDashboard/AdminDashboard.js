@@ -40,7 +40,7 @@ function AdminDashboard(props) {
             <FestivalsForm onChange={handleFestivalChange} />
             <Artists onClick={handleArtistsClick} />
             <AddPlaylistForm data={playlistBase} token={accessToken} />
-            {/* <button onClick={handleReturn}> go back</button> */}
+            <button onClick={handleReturn}> go back</button>
         </div>
     );
 }

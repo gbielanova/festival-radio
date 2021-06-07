@@ -8,7 +8,9 @@ import Header from '../Header/Header';
 import SpotifyWebApi from 'spotify-web-api-node';
 import './Dashboard.css';
 import { useDataLayerValue } from '../../DataLayer';
+import axios from 'axios';
 
+const PlaylistsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/playlist/';
 
 const clientId = 'afa5c44e65bc40928f489b6bff9d91fe';
 
@@ -17,7 +19,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Dashboard() {
-    const [{ accessToken, playingPlaylist }, dispatch] = useDataLayerValue();
+    const [{ accessToken, playingPlaylist, festival }, dispatch] = useDataLayerValue();
 
     function handleClick() {
         dispatch({
@@ -60,24 +62,30 @@ function Dashboard() {
             }
         });
 
-        ['5VVoHEuqZBs6kATsF7nLTS', '6ihAiSvGzfRkBZFf8F2vL9', '3iQL47pHJ9YeAbSeXv4Zbp',
-            '5unwHGGK3FdtuCuREik2xv', '13maJFCugAJicrteZ095TD', '5R8E4lPChZ7l6dNrihfFQS',
-            '3ivG9ZxjtnERiJWQtyJYFC', '0t1rNc9h9MnPVJcotS0Bng', '4f9CawPddxzOUSJUKj68TQ',
-            '6bHiAAxR0CLBOozXSyGfrz', '3KxnnQenLSYEMNuTh4gsxm'].map(id => (
-                spotifyApi.getPlaylist(id).then(res => {
-                    dispatch({
-                        type: "SET_PLAYLISTS",
-                        playlist: {
-                            description: res.body.description,
-                            name: res.body.name,
-                            id: res.body.id,
-                            href: res.body.href,
-                            tracks: res.body.tracks,
-                            image: res.body.images[0].url,
-                        },
-                    });
-                })
-            ));
+        axios.get(PlaylistsUrl)
+            .then(res => {
+                console.log(festival);
+                let ids = res.data.filter(
+                    (el) => el.festival_id === festival.id)
+                    .map((el) => el.playlist_id);
+                ids.map(id => (
+                    spotifyApi.getPlaylist(id).then(res => {
+                        dispatch({
+                            type: "SET_PLAYLISTS",
+                            playlist: {
+                                description: res.body.description,
+                                name: res.body.name,
+                                id: res.body.id,
+                                href: res.body.href,
+                                tracks: res.body.tracks,
+                                image: res.body.images[0].url,
+                            },
+                        });
+                    })
+                ));
+            }
+            )
+
 
     }, [accessToken, dispatch])
 
