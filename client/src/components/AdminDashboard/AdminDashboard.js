@@ -3,6 +3,7 @@ import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalsForm from '../AdminDashboard/FestivalsForm/FestivalsForm'
 import Artists from './Artists/Artists';
+import AddPlaylistForm from './AddPlaylistForm/AddPlaylistForm';
 
 function AdminDashboard(props) {
     const [{ accessToken }, dispatch] = useDataLayerValue();
@@ -38,7 +39,7 @@ function AdminDashboard(props) {
         <div>
             <FestivalsForm onChange={handleFestivalChange} />
             <Artists onClick={handleArtistsClick} />
-            {console.log(playlistBase)}
+            <AddPlaylistForm data={playlistBase} token={accessToken} />
             {/* <button onClick={handleReturn}> go back</button> */}
         </div>
     );
