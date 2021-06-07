@@ -20,6 +20,7 @@ function FestivalsForm(props) {
 
     function handleFestChange(event) {
         setSelection(event.target.value);
+        props.onChange(event.target.value);
     }
 
     function submitFestivalForm(data) {

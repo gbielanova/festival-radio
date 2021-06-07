@@ -36,7 +36,7 @@ function Artists(props) {
         <div>
             {artists.map(
                 (item) =>
-                    <p key={item.id}>{item.name}</p>
+                    <p key={item.id} onClick={() => props.onClick(item.id)}>{item.name}</p>
             )}
             <AddCircleIcon onClick={addArtist} />
             {addFormActive && <AddArtistForm onSubmit={handleAddArtist} />}
