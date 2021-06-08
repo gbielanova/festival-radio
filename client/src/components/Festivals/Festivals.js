@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import './Festivals.css'
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
-import Login from '../Login/Login'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalBlock from '../FestivalBlock/FestivalBlock'
 import login from '../../login';
@@ -32,9 +31,20 @@ function Festivals() {
         accessToken || login('play');
     }
 
+    function goToAdmin() {
+        if (accessToken) {
+            sessionStorage.setItem('state', 'admin');
+            dispatch({
+                type: "SET_FESTIVAL",
+                festival: null,
+            });
+        }
+        else login('admin');
+    }
+
     return (
         <div className='festivals'>
-            <Login text="Create new playlist" cName='festivals__login' state='admin' />
+            <button className="festivals__login" onClick={goToAdmin}>Create new playlist</button>
 
             <Carousel
                 className="carousel"

@@ -69,6 +69,9 @@
   text-decoration: none;
   transition: 200ms ease-in;
   z-index: 1;
+  background-color: black;
+  border: none;
+  cursor: pointer;
 }
 
 .festivals__login:hover {

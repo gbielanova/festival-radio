@@ -1,4 +1,3 @@
-import Login from './components/Login/Login';
 import Dashboard from './components/Dashboard/Dashboard';
 import AdminDashboard from './components/AdminDashboard/AdminDashboard';
 import Festivals from './components/Festivals/Festivals';
