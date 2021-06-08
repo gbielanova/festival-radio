@@ -4,6 +4,7 @@ import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 import PrintData from '../AdminDashboard/PrintData/PrintData'
 import AddFestivalForm from '../AdminDashboard/AddFestivalForm/AddFestivalForm'
+import AddArtistForm from '../AdminDashboard/AddArtistForm/AddArtistForm'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 const ArtistsUrl = "http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/artist/";
@@ -43,21 +44,6 @@ function AdminDashboard(props) {
         });
     }
 
-    function handleFestivalChange(festivalId) {
-        setPlaylistBase({
-            'festivalId': festivalId,
-            'artists': [...playlistBase.artists]
-        });
-    }
-
-    function handleArtistsClick(artistId) {
-        [...playlistBase.artists].indexOf(artistId) === -1 &&
-            setPlaylistBase({
-                'festivalId': playlistBase.festivalId,
-                'artists': [...playlistBase.artists, artistId]
-            });
-    }
-
     function handlePrintDataClick(id) {
         console.log('clicked on ', id);
     }
@@ -70,12 +56,21 @@ function AdminDashboard(props) {
     }
 
     function submitFestivalForm(data) {
-        handleToggleForm(FestivalsTitle);
         axios.post(FestivalsUrl, {
             name: data.name,
             logo_url: data.logo_url
         })
             .then(res => axios.get(FestivalsUrl).then((res) => { setFestivals(res.data) }))
+        handleToggleForm(FestivalsTitle);
+    }
+
+    function submitArtistForm(name) {
+        console.log(name);
+        axios.post(ArtistsUrl, {
+            name: name,
+        })
+            .then(res => axios.get(ArtistsUrl).then((res) => { setArtists(res.data) }))
+        handleToggleForm(ArtistsTitle);
     }
 
     return (
@@ -83,6 +78,7 @@ function AdminDashboard(props) {
             <PrintData title={FestivalsTitle} data={festivals} onClick={handlePrintDataClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === FestivalsTitle).visible && <AddFestivalForm onSubmit={submitFestivalForm} />}
             <PrintData title={ArtistsTitle} data={artists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            {forms.find((f) => f.title === ArtistsTitle).visible && <AddArtistForm onSubmit={submitArtistForm} />}
             <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
 
             {/* <FestivalsForm onChange={handleFestivalChange} /> */}
