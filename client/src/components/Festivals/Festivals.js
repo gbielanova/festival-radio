@@ -5,12 +5,14 @@ import Carousel from 'react-material-ui-carousel'
 import Login from '../Login/Login'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalBlock from '../FestivalBlock/FestivalBlock'
+import login from '../../login';
+
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 
 function Festivals() {
     const [fests, setFests] = useState([]);
-    const [{ }, dispatch] = useDataLayerValue();
+    const [{ accessToken }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
         const fetchData = async () => {
@@ -27,6 +29,7 @@ function Festivals() {
             festival: item,
         });
         sessionStorage.setItem('selectedFestival', JSON.stringify(item));
+        accessToken || login('play');
     }
 
     return (

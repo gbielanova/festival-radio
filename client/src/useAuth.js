@@ -6,6 +6,7 @@ import { useDataLayerValue } from './DataLayer';
 const serverLoginURL = 'http://localhost:3001/login';
 const serverRefreshURL = 'http://localhost:3001/refresh';
 
+
 function useAuth(code) {
     const [{ accessToken, refreshToken, expiresIn }, dispatch] = useDataLayerValue();
 
@@ -61,5 +62,6 @@ function useAuth(code) {
 
     return accessToken;
 }
+
 
 export default useAuth;
