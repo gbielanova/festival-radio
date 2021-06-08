@@ -113,7 +113,14 @@ function AdminDashboard(props) {
 
     return (
         <div className='admin'>
-            <button className='admin__button' onClick={handleReturn}>Back to music</button>
+            <div className="admin__header">
+                <button className='admin__button' onClick={handleReturn}>Back to music</button>
+                <div className="admin__instructions">
+                    <p className='admin__help' onClick={handleReturn}>Select festival...</p>
+                    <p className='admin__help' onClick={handleReturn}>Select artists...</p>
+                    <p className='admin__help' onClick={handleReturn}>Finally press '+' to create a new playlist with selected artists!</p>
+                    <p className='admin__help' onClick={handleReturn}>Forgot what playlist contains? No problems, just click on it!</p>
+                </div></div>
             <PrintData title={FestivalsTitle} selectedData={playlistBase.festivalId} data={festivals} onClick={handleFestivalClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === FestivalsTitle).visible && <AddForm onSubmit={submitFestivalForm} placeholder='Festival name' logo_placeholder='Logo url' />}
             <PrintData title={ArtistsTitle} selectedData={playlistBase.artists} data={artists} onClick={handleArtistClick} openForm={handleToggleForm} />

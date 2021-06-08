@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
 .admin {
   background-color: black;
   min-height: 100vh;
@@ -19,4 +20,20 @@
   transform: scale(1.2);
   color: white;
   font-weight: bold;
+}
+
+.admin__header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin__instructions {
+  padding: 10px;
+}
+
+.admin__help {
+  color: gold;
+  font-size: 18px;
+  text-align: end;
+  font-family: "Dancing Script", cursive;
 }
