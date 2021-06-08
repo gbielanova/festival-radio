@@ -2,9 +2,10 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
-import PrintData from '../AdminDashboard/PrintData/PrintData'
-import AddFestivalForm from '../AdminDashboard/AddFestivalForm/AddFestivalForm'
-import AddArtistForm from '../AdminDashboard/AddArtistForm/AddArtistForm'
+import PrintData from './PrintData/PrintData'
+import AddFestivalForm from './AddFestivalForm/AddFestivalForm'
+import AddArtistForm from './AddArtistForm/AddArtistForm'
+import AddPlaylistForm from './AddPlaylistForm/AddPlaylistForm'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 const ArtistsUrl = "http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/artist/";
@@ -27,7 +28,7 @@ function AdminDashboard(props) {
 
     const [playlistBase, setPlaylistBase] = useState({
         'festivalId': null,
-        'artists': ''
+        'artists': []
     })
 
     useEffect(() => {
@@ -44,8 +45,23 @@ function AdminDashboard(props) {
         });
     }
 
-    function handlePrintDataClick(id) {
-        console.log('clicked on ', id);
+    function handleFestivalClick(item) {
+        setPlaylistBase({
+            'festivalId': item.id,
+            'artists': [...playlistBase.artists],
+        })
+    }
+
+    function handleArtistClick(item) {
+        (playlistBase.artists.indexOf(item.id) === -1) &&
+            setPlaylistBase({
+                'festivalId': playlistBase.festivalId,
+                'artists': [...playlistBase.artists, item.id],
+            })
+    }
+
+    function handlePlaylistClick(item) {
+        console.log('clicked on ', item);
     }
 
     function handleToggleForm(title) {
@@ -73,18 +89,31 @@ function AdminDashboard(props) {
         handleToggleForm(ArtistsTitle);
     }
 
+    function submitPlaylistForm(name) {
+        axios.post(PlaylistsUrl, {
+            festival_id: playlistBase.festivalId,
+            artists: playlistBase.artists.join(','),
+            name: name,
+            spotify_token: accessToken
+        })
+            .then(res => axios.get(PlaylistsUrl).then((res) => { setPlaylists(res.data) }))
+        handleToggleForm(PlaylistsTitle);
+        setPlaylistBase({
+            'festivalId': null,
+            'artists': []
+        })
+    }
+
     return (
         <div className='admin'>
-            <PrintData title={FestivalsTitle} data={festivals} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            <PrintData title={FestivalsTitle} data={festivals} onClick={handleFestivalClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === FestivalsTitle).visible && <AddFestivalForm onSubmit={submitFestivalForm} />}
-            <PrintData title={ArtistsTitle} data={artists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            <PrintData title={ArtistsTitle} data={artists} onClick={handleArtistClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === ArtistsTitle).visible && <AddArtistForm onSubmit={submitArtistForm} />}
-            <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePlaylistClick} openForm={handleToggleForm} />
+            {forms.find((f) => f.title === PlaylistsTitle).visible && <AddPlaylistForm onSubmit={submitPlaylistForm} />}
 
-            {/* <FestivalsForm onChange={handleFestivalChange} /> */}
-            {/* <Artists onClick={handleArtistsClick} />
-            <AddPlaylistForm data={playlistBase} token={accessToken} /> */}
-            {/* <button onClick={handleReturn}> go back</button> */}
+            <button onClick={handleReturn}> go back</button>
         </div>
     );
 }
