@@ -46,7 +46,7 @@
   border: none;
   border-radius: 10px;
   transition: 200ms ease-in;
-  cursor: pointe;
+  cursor: pointer;
 }
 
 .carousel__block:hover .carousel__button {

@@ -1,0 +1,28 @@
+.printData {
+  padding: 10px;
+}
+
+.printData__header {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.printData__element {
+  padding: 10px;
+  background-color: grey;
+  display: inline-block;
+  margin: 10px;
+  border-radius: 10px;
+  transition: 200ms ease-in;
+  cursor: pointer;
+}
+
+.printData__element:hover {
+  transform: scale(1.2);
+}
+
+.printData__body {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
