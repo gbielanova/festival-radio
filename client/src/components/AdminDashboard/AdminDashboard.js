@@ -3,17 +3,26 @@ import axios from 'axios';
 import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 import PrintData from '../AdminDashboard/PrintData/PrintData'
+import AddFestivalForm from '../AdminDashboard/AddFestivalForm/AddFestivalForm'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 const ArtistsUrl = "http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/artist/";
 const PlaylistsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/playlist/';
 
+const FestivalsTitle = 'Festivals';
+const ArtistsTitle = 'Artists';
+const PlaylistsTitle = 'Playlists';
 
 function AdminDashboard(props) {
     const [{ accessToken }, dispatch] = useDataLayerValue();
     const [festivals, setFestivals] = useState([]);
     const [artists, setArtists] = useState([]);
     const [playlists, setPlaylists] = useState([]);
+    const [forms, setForms] = useState([
+        { title: FestivalsTitle, visible: false },
+        { title: ArtistsTitle, visible: false },
+        { title: PlaylistsTitle, visible: false },
+    ])
 
     const [playlistBase, setPlaylistBase] = useState({
         'festivalId': null,
@@ -53,15 +62,28 @@ function AdminDashboard(props) {
         console.log('clicked on ', id);
     }
 
-    function handleOpenForm(title) {
-        console.log('open form to add ', title)
+    function handleToggleForm(title) {
+        const newForms = [...forms];
+        const changedForm = newForms.find((f) => f.title === title);
+        changedForm.visible = !changedForm.visible;
+        setForms(newForms);
+    }
+
+    function submitFestivalForm(data) {
+        handleToggleForm(FestivalsTitle);
+        axios.post(FestivalsUrl, {
+            name: data.name,
+            logo_url: data.logo_url
+        })
+            .then(res => axios.get(FestivalsUrl).then((res) => { setFestivals(res.data) }))
     }
 
     return (
         <div className='admin'>
-            <PrintData title='Festivals' data={festivals} onClick={handlePrintDataClick} openForm={handleOpenForm} />
-            <PrintData title='Artists' data={artists} onClick={handlePrintDataClick} openForm={handleOpenForm} />
-            <PrintData title='Playlists' data={playlists} onClick={handlePrintDataClick} openForm={handleOpenForm} />
+            <PrintData title={FestivalsTitle} data={festivals} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            {forms.find((f) => f.title === FestivalsTitle).visible && <AddFestivalForm onSubmit={submitFestivalForm} />}
+            <PrintData title={ArtistsTitle} data={artists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
+            <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePrintDataClick} openForm={handleToggleForm} />
 
             {/* <FestivalsForm onChange={handleFestivalChange} /> */}
             {/* <Artists onClick={handleArtistsClick} />
