@@ -26,3 +26,12 @@
   align-items: center;
   flex-wrap: wrap;
 }
+
+.printData__add {
+  cursor: pointer;
+  transition: 200ms ease-in;
+}
+
+.printData__add:hover {
+  transform: scale(1.2);
+}

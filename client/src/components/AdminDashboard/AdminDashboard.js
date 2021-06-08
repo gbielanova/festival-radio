@@ -3,9 +3,7 @@ import axios from 'axios';
 import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 import PrintData from './PrintData/PrintData'
-import AddFestivalForm from './AddFestivalForm/AddFestivalForm'
-import AddArtistForm from './AddArtistForm/AddArtistForm'
-import AddPlaylistForm from './AddPlaylistForm/AddPlaylistForm'
+import AddForm from './AddForm/AddForm'
 
 const FestivalsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/festival/';
 const ArtistsUrl = "http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/artist/";
@@ -106,14 +104,13 @@ function AdminDashboard(props) {
 
     return (
         <div className='admin'>
+            <button className='admin__button' onClick={handleReturn}>Back to music</button>
             <PrintData title={FestivalsTitle} data={festivals} onClick={handleFestivalClick} openForm={handleToggleForm} />
-            {forms.find((f) => f.title === FestivalsTitle).visible && <AddFestivalForm onSubmit={submitFestivalForm} />}
+            {forms.find((f) => f.title === FestivalsTitle).visible && <AddForm onSubmit={submitFestivalForm} placeholder='Festival name' logo_placeholder='Logo url' />}
             <PrintData title={ArtistsTitle} data={artists} onClick={handleArtistClick} openForm={handleToggleForm} />
-            {forms.find((f) => f.title === ArtistsTitle).visible && <AddArtistForm onSubmit={submitArtistForm} />}
+            {forms.find((f) => f.title === ArtistsTitle).visible && <AddForm onSubmit={submitArtistForm} placeholder='Artist name' />}
             <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePlaylistClick} openForm={handleToggleForm} />
-            {forms.find((f) => f.title === PlaylistsTitle).visible && <AddPlaylistForm onSubmit={submitPlaylistForm} />}
-
-            <button onClick={handleReturn}> go back</button>
+            {forms.find((f) => f.title === PlaylistsTitle).visible && <AddForm onSubmit={submitPlaylistForm} placeholder='Playlist name' />}
         </div>
     );
 }

@@ -3,3 +3,20 @@
   min-height: 100vh;
   color: white;
 }
+
+.admin__button {
+  padding: 10px;
+  background-color: black;
+  color: grey;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 200ms ease-in;
+}
+
+.admin__button:hover {
+  transform: scale(1.2);
+  color: white;
+  font-weight: bold;
+}
