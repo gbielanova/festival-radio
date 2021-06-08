@@ -84,7 +84,7 @@ function Dashboard() {
                 ));
             }
             )
-    }, [accessToken, dispatch])
+    }, [accessToken, dispatch, festival.id])
 
     return (
         <div>

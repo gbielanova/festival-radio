@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './AdminDashboard.css'
 import { useDataLayerValue } from '../../DataLayer';
 import FestivalsForm from '../AdminDashboard/FestivalsForm/FestivalsForm'
