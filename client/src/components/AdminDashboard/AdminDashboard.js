@@ -26,7 +26,8 @@ function AdminDashboard(props) {
 
     const [playlistBase, setPlaylistBase] = useState({
         'festivalId': null,
-        'artists': []
+        'artists': [],
+        'playlistId': null
     })
 
     useEffect(() => {
@@ -47,6 +48,7 @@ function AdminDashboard(props) {
         setPlaylistBase({
             'festivalId': item.id,
             'artists': [...playlistBase.artists],
+            'playlistId': playlistBase.playlistId,
         })
     }
 
@@ -55,11 +57,18 @@ function AdminDashboard(props) {
             setPlaylistBase({
                 'festivalId': playlistBase.festivalId,
                 'artists': [...playlistBase.artists, item.id],
+                'playlistId': playlistBase.playlistId,
             })
     }
 
     function handlePlaylistClick(item) {
-        console.log('clicked on ', item);
+        console.log(item.artists.split(','));
+
+        setPlaylistBase({
+            'festivalId': item.festival_id,
+            'artists': item.artists.split(','),
+            'playlistId': item.id,
+        })
     }
 
     function handleToggleForm(title) {
@@ -105,11 +114,11 @@ function AdminDashboard(props) {
     return (
         <div className='admin'>
             <button className='admin__button' onClick={handleReturn}>Back to music</button>
-            <PrintData title={FestivalsTitle} data={festivals} onClick={handleFestivalClick} openForm={handleToggleForm} />
+            <PrintData title={FestivalsTitle} selectedData={playlistBase.festivalId} data={festivals} onClick={handleFestivalClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === FestivalsTitle).visible && <AddForm onSubmit={submitFestivalForm} placeholder='Festival name' logo_placeholder='Logo url' />}
-            <PrintData title={ArtistsTitle} data={artists} onClick={handleArtistClick} openForm={handleToggleForm} />
+            <PrintData title={ArtistsTitle} selectedData={playlistBase.artists} data={artists} onClick={handleArtistClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === ArtistsTitle).visible && <AddForm onSubmit={submitArtistForm} placeholder='Artist name' />}
-            <PrintData title={PlaylistsTitle} data={playlists} onClick={handlePlaylistClick} openForm={handleToggleForm} />
+            <PrintData title={PlaylistsTitle} selectedData={playlistBase.playlistId} data={playlists} onClick={handlePlaylistClick} openForm={handleToggleForm} />
             {forms.find((f) => f.title === PlaylistsTitle).visible && <AddForm onSubmit={submitPlaylistForm} placeholder='Playlist name' />}
         </div>
     );
