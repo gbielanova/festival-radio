@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap");
+
 .admin {
   background-color: black;
   min-height: 100vh;
@@ -17,7 +18,7 @@
 }
 
 .admin__button:hover {
-  transform: scale(1.2);
+  transform: translateX(10px) scale(1.2);
   color: white;
   font-weight: bold;
 }
@@ -25,6 +26,7 @@
 .admin__header {
   display: flex;
   justify-content: space-between;
+  align-items: start;
 }
 
 .admin__instructions {

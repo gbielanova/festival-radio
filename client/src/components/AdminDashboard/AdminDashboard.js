@@ -48,7 +48,7 @@ function AdminDashboard(props) {
         setPlaylistBase({
             'festivalId': item.id,
             'artists': [...playlistBase.artists],
-            'playlistId': playlistBase.playlistId,
+            'playlistId': null,
         })
     }
 
@@ -57,16 +57,14 @@ function AdminDashboard(props) {
             setPlaylistBase({
                 'festivalId': playlistBase.festivalId,
                 'artists': [...playlistBase.artists, item.id],
-                'playlistId': playlistBase.playlistId,
+                'playlistId': null,
             })
     }
 
     function handlePlaylistClick(item) {
-        console.log(item.artists.split(','));
-
         setPlaylistBase({
             'festivalId': item.festival_id,
-            'artists': item.artists.split(','),
+            'artists': item.artists.split(',').map((el) => +el),
             'playlistId': item.id,
         })
     }

@@ -7,7 +7,7 @@ function PrintData({ title, selectedData, data, onClick, openForm }) {
     function getClasses(id) {
         let classes = '';
         ((selectedData && (typeof selectedData === 'number') && (selectedData === id)) ||
-            (selectedData && (typeof selectedData === 'object') && (selectedData.indexOf(id.toString()) > -1)))
+            (selectedData && (typeof selectedData === 'object') && (selectedData.indexOf(id) > -1)))
             ? classes = 'printData__element selected'
             : classes = 'printData__element';
         return classes;
