@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import SpotifyPlayer from "react-spotify-web-playback";
 import { useDataLayerValue } from '../../DataLayer';
 import SpotifyWebApi from 'spotify-web-api-node';
@@ -10,11 +10,13 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Player() {
-    const [{ accessToken, playingPlaylist, playingTrack }, dispatch] = useDataLayerValue();
+    const [{ accessToken, playingPlaylist, playingTrack, playingNow }, dispatch] = useDataLayerValue();
 
-    const [play, setPlay] = useState(false);
-
-    useEffect(() => setPlay(true), [playingPlaylist, playingTrack]);
+    useEffect(() =>
+        dispatch({
+            type: "SET_PLAYING_NOW",
+            playingNow: true,
+        }), [dispatch, playingPlaylist]);
 
     if (!accessToken) return null;
 
@@ -27,10 +29,14 @@ function Player() {
             token={accessToken}
             callback={
                 state => {
-                    if (!state.isPlaying) setPlay(false)
+                    if (playingNow !== state.isPlaying)
+                        dispatch({
+                            type: "SET_PLAYING_NOW",
+                            playingNow: state.isPlaying,
+                        });
                     if (state?.track?.id !== playingTrack?.id) {
                         let track = playingPlaylist?.tracks.items.filter(item => item?.track.id === state?.track?.id)[0];
-                        if (track)
+                        if (track && track.track !== playingTrack)
                             dispatch({
                                 type: "SET_PLAYING_TRACK",
                                 playingTrack: track.track,
@@ -39,7 +45,7 @@ function Player() {
 
                 }
             }
-            play={play}
+            play={playingNow}
             uris={playingPlaylist ? playingUris : []}
             offset={playingTrack ? playingUris.indexOf(playingTrack.uri) : 0}
             styles={{

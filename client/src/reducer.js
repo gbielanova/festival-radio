@@ -3,12 +3,12 @@ export const initialState = {
     playlists: [],
     favorites: localStorage.getItem('favorites')?.split(',') || [],
     playingPlaylist: null,
-    activeSidebarItem: null,
     accessToken: sessionStorage.getItem('token') || null,
     refreshToken: null,
     expiresIn: null,
     premium: false,
     playingTrack: null,
+    playingNow: false,
     festival: JSON.parse(sessionStorage.getItem('selectedFestival')) || null,
 }
 
@@ -61,6 +61,11 @@ const reducer = (state, action) => {
             return {
                 ...state,
                 favorites: action.favorites,
+            };
+        case "SET_PLAYING_NOW":
+            return {
+                ...state,
+                playingNow: action.playingNow,
             };
         case "SET_FESTIVAL":
             return {

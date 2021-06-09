@@ -4,13 +4,18 @@ import { useDataLayerValue } from '../../DataLayer';
 import SongRow from '../SongRow/SongRow';
 
 function Main() {
-    const [{ playingPlaylist }, dispatch] = useDataLayerValue();
+    const [{ playingPlaylist, playingNow, playingTrack }, dispatch] = useDataLayerValue();
 
     const playSong = (track) => {
-        dispatch({
-            type: "SET_PLAYING_TRACK",
-            playingTrack: track,
-        });
+        (track === playingTrack)
+            ? dispatch({
+                type: "SET_PLAYING_NOW",
+                playingNow: !playingNow,
+            })
+            : dispatch({
+                type: "SET_PLAYING_TRACK",
+                playingTrack: track,
+            });
     }
 
     return (

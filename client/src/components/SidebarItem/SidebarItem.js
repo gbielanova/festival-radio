@@ -1,7 +1,8 @@
 import React from 'react';
 import './SidebarItem.css';
 import { useDataLayerValue } from '../../DataLayer';
-import PlayArrowIcon from '@material-ui/icons/PlayArrow';
+import AudiotrackIcon from '@material-ui/icons/Audiotrack';
+
 
 function SidebarItem({ title, playlist, Icon, choosePlaylist, Favorite, cName, onClick }) {
     const [{ playingPlaylist, favorites }, dispatch] = useDataLayerValue();
@@ -28,7 +29,7 @@ function SidebarItem({ title, playlist, Icon, choosePlaylist, Favorite, cName, o
 
     return (
         <div className={`sidebarItem ${activePlaylist ? 'sidebarItem-active' : ''}`} >
-            {activePlaylist && <PlayArrowIcon />}
+            {activePlaylist && <AudiotrackIcon />}
             {Icon && <Icon className='sidebarItem__icon' />}
             {Icon ? <h4 className='sidebarItem__title sidebarItem__text' onClick={onClick}>{title}</h4> : <p className='sidebarItem__text' onClick={handlePlaylistClick}>{playlist.name}</p>}
             {Favorite && <Favorite className={`sidebarItem__favorite ${cName || ''}`} onClick={handleFavoriteClick} />}
