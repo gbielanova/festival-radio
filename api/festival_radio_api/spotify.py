@@ -26,15 +26,16 @@ def generate_playlist(token, name, artists):
         params = {"q": artist, "type": "artist"}
         get_artist_response = requests.get(SEARCH_URL, headers=headers, params=params)
         get_artist_response.raise_for_status()
-        artist_id = get_artist_response.json()["artists"]["items"][0]["id"]
+        if len(get_artist_response.json()["artists"]["items"]) > 0:
+            artist_id = get_artist_response.json()["artists"]["items"][0]["id"]
 
-        get_top_songs_response = requests.get(
-            f"{ARTISTS_URL}/{artist_id}/top-tracks?market=ua", headers=headers
-        )
-        get_top_songs_response.raise_for_status()
-        top_songs = get_top_songs_response.json()
-        for song in top_songs["tracks"]:
-            song_uris.append(song["uri"])
+            get_top_songs_response = requests.get(
+                f"{ARTISTS_URL}/{artist_id}/top-tracks?market=ua", headers=headers
+            )
+            get_top_songs_response.raise_for_status()
+            top_songs = get_top_songs_response.json()
+            for song in top_songs["tracks"]:
+                song_uris.append(song["uri"])
 
     payload = {"name": name, "public": False}
     create_playlist_response = requests.post(
@@ -52,5 +53,10 @@ def generate_playlist(token, name, artists):
         headers=headers,
     )
     add_songs_response.raise_for_status()
+
+    unfollow_playlist = requests.delete(
+        f"{ADD_SONGS_URL}/{playlist_id}/followers", headers=headers
+    )
+    unfollow_playlist.raise_for_status()
 
     return playlist_id
