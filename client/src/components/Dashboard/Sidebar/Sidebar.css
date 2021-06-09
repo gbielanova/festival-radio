@@ -36,3 +36,15 @@
   margin-left: 10px;
   border-bottom: 1px white solid;
 }
+
+@media only screen and (max-width: 768px) {
+  .sidebar {
+    flex: 0.1;
+  }
+
+  .sidebar__logos,
+  .sidebar__header,
+  .sidebar__title {
+    display: none;
+  }
+}

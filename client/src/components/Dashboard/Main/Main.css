@@ -41,3 +41,14 @@
   padding: 10px;
   background: linear-gradient(rgb(54, 52, 65), rgb(26, 25, 25));
 }
+
+@media only screen and (max-width: 424px) {
+  .main__info {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .main__logo {
+    height: 80%;
+  }
+}

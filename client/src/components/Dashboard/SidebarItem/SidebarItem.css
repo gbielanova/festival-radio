@@ -50,3 +50,9 @@
 .sidebarItem-favorite:hover {
   color: #1ed760;
 }
+
+@media only screen and (max-width: 768px) {
+  .sidebarItem {
+    display: none;
+  }
+}

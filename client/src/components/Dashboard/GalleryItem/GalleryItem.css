@@ -1,5 +1,6 @@
 .galleryItem {
   width: 30%;
+  min-width: 280px;
   margin: 10px;
   background-color: black;
   display: flex;
@@ -37,7 +38,6 @@
   font-size: 12px;
   font-weight: 400;
   width: 90%;
-  /* white-space: nowrap; */
   overflow: hidden;
   text-overflow: ellipsis;
 }
