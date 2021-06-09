@@ -1,16 +1,16 @@
 import React from 'react';
 import './Gallery.css';
 import { useDataLayerValue } from '../../../DataLayer';
-import PlaylistItem from '../PlaylistItem/PlaylistItem'
+import GalleryItem from '../GalleryItem/GalleryItem'
 
 function Gallery(props) {
     const [{ playlists }] = useDataLayerValue();
 
     return (
         <div className='gallery'>
-            <div className="galleryItems">
+            <div className="gallery__items">
                 {playlists?.map(item => (
-                    <PlaylistItem playlist={item} key={item.id} />
+                    <GalleryItem playlist={item} key={item.id} />
                 ))}</div>
         </div>
     );

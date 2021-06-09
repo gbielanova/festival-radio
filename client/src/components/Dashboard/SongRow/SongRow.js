@@ -10,7 +10,7 @@ function SongRow({ track, playSong }) {
     if (!track) return (<></>);
 
     return (
-        <div className={`songRow ${(playingTrack === track) ? 'songRow-active' : ''}`} onClick={() => playSong(track)}>
+        <article className={`songRow ${(playingTrack === track) ? 'songRow-active' : ''}`} onClick={() => playSong(track)}>
             {((playingTrack === track) && premium) &&
                 (playingNow ? <PauseIcon className='songRow__icon' /> : <PlayArrowIcon className='songRow__icon' />)}
             <img className='songRow__img' src={track.album?.images[0]?.url || playingPlaylist?.image} alt="" />
@@ -20,7 +20,7 @@ function SongRow({ track, playSong }) {
                     {track.artists.map((artist) => artist.name).join(', ')}
                 </p>
             </div>
-        </div>
+        </article>
     );
 }
 

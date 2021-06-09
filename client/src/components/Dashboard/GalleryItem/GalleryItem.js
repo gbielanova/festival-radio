@@ -1,9 +1,9 @@
 import React from 'react';
-import './PlaylistItem.css';
+import './GalleryItem.css';
 import { useDataLayerValue } from '../../../DataLayer';
 
 
-function PlaylistItem({ playlist }) {
+function GalleryItem({ playlist }) {
     const [{ }, dispatch] = useDataLayerValue();
 
     function handleClick() {
@@ -18,12 +18,12 @@ function PlaylistItem({ playlist }) {
     }
 
     return (
-        <div className='playlistItem' onClick={handleClick}>
-            <img src={playlist.image} alt="Playlist cover" className="playlistItem__img" />
-            <p className="playlistItem__name">{playlist.name}</p>
-            <p className="playlistItem__description">{playlist.description}</p>
+        <div className='galleryItem' onClick={handleClick}>
+            <img src={playlist.image} alt="Playlist cover" className="galleryItem__img" />
+            <p className="galleryItem__name">{playlist.name}</p>
+            <p className="galleryItem__description">{playlist.description}</p>
         </div>
     );
 }
 
-export default PlaylistItem;
+export default GalleryItem;

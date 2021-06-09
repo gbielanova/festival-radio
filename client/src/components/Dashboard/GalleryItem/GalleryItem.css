@@ -1,4 +1,4 @@
-.playlistItem {
+.galleryItem {
   width: 30%;
   margin: 10px;
   background-color: black;
@@ -12,19 +12,19 @@
   transition: 200ms ease-in;
 }
 
-.playlistItem:hover {
+.galleryItem:hover {
   background-color: rgba(46, 45, 45, 0.404);
   color: white;
   cursor: pointer;
 }
 
-.playlistItem__img {
+.galleryItem__img {
   width: 90%;
   border-radius: 10%;
   margin: 10px 0;
 }
 
-.playlistItem__name {
+.galleryItem__name {
   font-size: 24px;
   font-weight: 700;
   width: 90%;
@@ -33,7 +33,7 @@
   text-overflow: ellipsis;
 }
 
-.playlistItem__description {
+.galleryItem__description {
   font-size: 12px;
   font-weight: 400;
   width: 90%;

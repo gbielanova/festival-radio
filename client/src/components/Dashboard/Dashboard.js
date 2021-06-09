@@ -90,10 +90,10 @@ function Dashboard() {
         <div>
             <section className="dashboard">
                 <Sidebar />
-                <div className='main__wrapper'>
+                <main className='main__wrapper'>
                     <Header handleClick={handleClick} />
                     {playingPlaylist ? <Main /> : <Gallery />}
-                </div>
+                </main>
             </section>
             <Player />
         </div >

@@ -31,13 +31,13 @@ function Sidebar() {
 
     return (
         <aside className='sidebar'>
-            <div className='sidebar__header'>
+            <header className='sidebar__header'>
                 <div className="sidebar__logos">
                     <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
                     <img className='sidebar__logo' src={festival.logo_url} alt="Festival logo"></img>
                 </div>
                 <SidebarItem title="Home" Icon={HomeIcon} onClick={handleClick} />
-            </div>
+            </header>
 
             <h3 className='sidebar__title'>FAVORITE</h3>
             {playlists?.map(playlist => (

@@ -20,19 +20,19 @@ function Main() {
 
     return (
         <main className="main">
-            <div className='main__info'>
+            <header className='main__info'>
                 <img className='main__logo' src={playingPlaylist?.image} alt='Playlist logo' />
                 <div className='main__infoText'>
                     <h2 className='main__name'>{playingPlaylist?.name}</h2>
                     <p className='main__description'>{playingPlaylist?.description}</p>
                 </div>
-            </div>
+            </header>
 
-            <div className="main__songs">
+            <section className="main__songs">
                 {playingPlaylist?.tracks?.items.map((item, index) => (
                     < SongRow track={item.track} key={index} playSong={playSong} />
                 ))}
-            </div>
+            </section>
         </main>
     );
 }

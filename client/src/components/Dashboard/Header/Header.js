@@ -9,13 +9,13 @@ function Header({ handleClick }) {
     const [{ user }] = useDataLayerValue();
 
     return (
-        <div className='header' >
+        <header className='header' >
             <div className="header__wrapper">
                 <Avatar src={user?.images[0]?.url} alt={user?.display_name} />
                 <p className='header__text'>{user?.display_name}</p>
                 <ExitToAppIcon className='header__logout' onClick={handleClick} />
             </div>
-        </div>
+        </header>
     );
 }
 
