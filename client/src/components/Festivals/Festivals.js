@@ -3,7 +3,7 @@ import './Festivals.css'
 import axios from 'axios';
 import Carousel from 'react-material-ui-carousel'
 import { useDataLayerValue } from '../../DataLayer';
-import FestivalBlock from '../FestivalBlock/FestivalBlock'
+import FestivalBlock from './FestivalBlock/FestivalBlock'
 import login from '../../login';
 
 
