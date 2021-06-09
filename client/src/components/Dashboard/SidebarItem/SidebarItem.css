@@ -4,7 +4,6 @@
   color: grey;
   height: 40px;
   cursor: pointer;
-  transition: 200ms color ease-in;
   padding: 10px;
 }
 
@@ -39,6 +38,15 @@
   margin-left: auto;
 }
 
-.sidebarItem-favorite {
+.sidebarItem__favorite.sidebarItem-favorite {
+  color: #1ed760;
+}
+
+.sidebarItem__favorite:hover {
+  color: white;
+  transform: scale(1.2);
+}
+
+.sidebarItem-favorite:hover {
   color: #1ed760;
 }

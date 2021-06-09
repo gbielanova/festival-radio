@@ -19,3 +19,7 @@
 .form__button:hover {
   background-color: white;
 }
+
+.form__input:focus {
+  background-color: white;
+}
