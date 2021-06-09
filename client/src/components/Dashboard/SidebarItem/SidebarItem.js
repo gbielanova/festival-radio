@@ -1,6 +1,6 @@
 import React from 'react';
 import './SidebarItem.css';
-import { useDataLayerValue } from '../../DataLayer';
+import { useDataLayerValue } from '../../../DataLayer';
 import AudiotrackIcon from '@material-ui/icons/Audiotrack';
 
 

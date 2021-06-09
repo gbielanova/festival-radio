@@ -1,6 +1,6 @@
 import React from 'react';
 import './PlaylistItem.css';
-import { useDataLayerValue } from '../../DataLayer';
+import { useDataLayerValue } from '../../../DataLayer';
 
 
 function PlaylistItem({ playlist }) {

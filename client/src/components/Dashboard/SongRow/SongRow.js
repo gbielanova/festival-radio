@@ -1,6 +1,6 @@
 import React from 'react';
 import './SongRow.css';
-import { useDataLayerValue } from '../../DataLayer';
+import { useDataLayerValue } from '../../../DataLayer';
 import PlayArrowIcon from '@material-ui/icons/PlayArrow';
 import PauseIcon from '@material-ui/icons/Pause';
 

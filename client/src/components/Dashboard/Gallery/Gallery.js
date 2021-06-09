@@ -1,6 +1,6 @@
 import React from 'react';
 import './Gallery.css';
-import { useDataLayerValue } from '../../DataLayer';
+import { useDataLayerValue } from '../../../DataLayer';
 import PlaylistItem from '../PlaylistItem/PlaylistItem'
 
 function Gallery(props) {

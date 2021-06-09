@@ -1,10 +1,10 @@
 import React from 'react';
 import './Sidebar.css';
+import { useDataLayerValue } from '../../../DataLayer';
 import SidebarItem from '../SidebarItem/SidebarItem';
-import HomeIcon from '@material-ui/icons/Home';
-import { useDataLayerValue } from '../../DataLayer';
-import spotifyLogo from '../../resources/img/spotifyLogo.svg';
+import spotifyLogo from '../../../resources/img/spotifyLogo.svg';
 import FavoriteIcon from '@material-ui/icons/Favorite';
+import HomeIcon from '@material-ui/icons/Home';
 
 
 function Sidebar() {

@@ -1,14 +1,14 @@
 import { useEffect } from 'react';
-// import TrackSearchResult from './TrackSearchResult';
-import Sidebar from '../Sidebar/Sidebar';
-import Main from '../Main/Main';
-import Footer from '../Footer/Footer';
-import Gallery from '../Gallery/Gallery';
-import Header from '../Header/Header';
-import SpotifyWebApi from 'spotify-web-api-node';
 import './Dashboard.css';
 import { useDataLayerValue } from '../../DataLayer';
 import axios from 'axios';
+import SpotifyWebApi from 'spotify-web-api-node';
+import Sidebar from './Sidebar/Sidebar';
+import Main from './Main/Main';
+import Gallery from './Gallery/Gallery';
+import Header from './Header/Header';
+import Player from './Player/Player';
+
 
 const PlaylistsUrl = 'http://ec2-52-51-232-161.eu-west-1.compute.amazonaws.com/api/playlist/';
 
@@ -95,7 +95,7 @@ function Dashboard() {
                     {playingPlaylist ? <Main /> : <Gallery />}
                 </div>
             </section>
-            <Footer />
+            <Player />
         </div >
     );
 }

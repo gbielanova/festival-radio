@@ -1,6 +1,6 @@
 import React from 'react';
 import './Main.css';
-import { useDataLayerValue } from '../../DataLayer';
+import { useDataLayerValue } from '../../../DataLayer';
 import SongRow from '../SongRow/SongRow';
 
 function Main() {
