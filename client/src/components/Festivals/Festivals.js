@@ -44,7 +44,7 @@ function Festivals() {
 
     return (
         <div className='festivals'>
-            <button className="festivals__login" onClick={goToAdmin}>Create new playlist</button>
+            <h4 className="festivals__login" onClick={goToAdmin}>Create new playlist</h4>
 
             <Carousel
                 className="carousel"
