@@ -4,7 +4,7 @@ import { useDataLayerValue } from '../../DataLayer';
 
 
 function PlaylistItem({ playlist }) {
-    const [dispatch] = useDataLayerValue();
+    const [{ }, dispatch] = useDataLayerValue();
 
     function handleClick() {
         dispatch({
