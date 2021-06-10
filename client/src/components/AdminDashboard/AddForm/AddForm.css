@@ -16,12 +16,15 @@
   cursor: pointer;
 }
 
-.form__button:hover {
+.form__button:hover,
+.form__input:hover {
   background-color: white;
 }
 
+.form__button:focus,
 .form__input:focus {
-  background-color: white;
+  box-shadow: 0 4px 40px white;
+  outline: none;
 }
 
 .form__error {

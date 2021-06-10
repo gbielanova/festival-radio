@@ -58,6 +58,12 @@
   transform: scale(1.2);
 }
 
+.carousel__button:focus {
+  transform: scale(1.2);
+  box-shadow: 0 4px 40px white;
+  outline: none;
+}
+
 .festivals__list {
   margin: 20px 20px 0 20px;
   display: flex;
@@ -81,4 +87,10 @@
 .festivals__login:hover {
   transform: scale(1.2);
   font-weight: bold;
+}
+
+.festivals__login:focus {
+  transform: scale(1.2);
+  text-shadow: 0 4px 40px white;
+  outline: none;
 }

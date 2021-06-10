@@ -44,7 +44,7 @@ function Festivals() {
 
     return (
         <div className='festivals'>
-            <h4 className="festivals__login" onClick={goToAdmin}>Create new playlist</h4>
+            <h4 className="festivals__login" onClick={goToAdmin} tabIndex={1}>Create new playlist</h4>
 
             <Carousel
                 className="carousel"
@@ -85,7 +85,7 @@ function Festivals() {
                         (item) =>
                             <article key={item.id} className='carousel__block' onClick={() => handleClick(item)}>
                                 <img src={item.logo_url} alt="logo" className='carousel__image' />
-                                <button className='carousel__button'>Get <span className='carousel__text'>{item.name}</span> boost!</button>
+                                <button className='carousel__button' tabIndex={0}>Get <span className='carousel__text'>{item.name}</span> boost!</button>
                             </article>
                     )
                 }

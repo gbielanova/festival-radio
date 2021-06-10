@@ -8,9 +8,9 @@ function FestivalBlock({ festival, chooseFestival }) {
     }
 
     return (
-        <div className='festivalBlock' onClick={handleCLick}>
+        <div className='festivalBlock' onClick={handleCLick} tabIndex={1}>
             <img className='festivalBlock__logo' src={festival.logo_url} alt={`${festival.name} logo`} />
-        </div>
+        </div >
     );
 }
 

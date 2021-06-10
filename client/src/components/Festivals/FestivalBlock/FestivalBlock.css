@@ -22,3 +22,9 @@
   transform: scale(1.2);
   box-shadow: 0 4px 40px grey;
 }
+
+.festivalBlock:focus {
+  transform: scale(1.2);
+  box-shadow: 0 4px 40px white;
+  outline: none;
+}
