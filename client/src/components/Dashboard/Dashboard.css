@@ -24,7 +24,7 @@
 
 @media only screen and (max-width: 768px) {
   .main__wrapper {
-    flex: 0.91;
+    flex: 0.85;
   }
 }
 

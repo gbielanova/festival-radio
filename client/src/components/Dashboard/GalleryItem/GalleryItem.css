@@ -1,6 +1,6 @@
 .galleryItem {
   width: 30%;
-  min-width: 280px;
+  min-width: 250px;
   margin: 10px;
   background-color: black;
   display: flex;
