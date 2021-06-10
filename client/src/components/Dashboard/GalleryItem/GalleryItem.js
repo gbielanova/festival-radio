@@ -4,6 +4,7 @@ import { useDataLayerValue } from '../../../DataLayer';
 
 
 function GalleryItem({ playlist }) {
+    // eslint-disable-next-line no-empty-pattern
     const [{ }, dispatch] = useDataLayerValue();
 
     function handleClick() {

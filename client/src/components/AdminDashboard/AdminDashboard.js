@@ -87,7 +87,6 @@ function AdminDashboard(props) {
     function submitFestivalForm(data) {
         let errorText = '';
         let formatError = 0;
-        let backendError = '';
 
         (!data.name) && (errorText += `Please enter name <br>`);
         if (!data.logo_url) errorText += 'Please enter url for logo'
@@ -103,16 +102,18 @@ function AdminDashboard(props) {
                 logo_url: data.logo_url
             })
                 .then(res => axios.get(FestivalsUrl).then((res) => { setFestivals(res.data) }))
-                .catch((error) => { console.log(error); backendError = 'Ooops something went wrong' });
+                .catch(() => { document.getElementsByClassName('form__error')[0].innerHTML = 'Ooops something went wrong' })
             handleToggleForm(FestivalsTitle)
         }
-        else { document.getElementsByClassName('form__error')[0].innerHTML = errorText }
-        document.getElementsByClassName('form__error')[0].innerHTML = backendError;
+        else {
+            console.log('im here', document.getElementsByClassName('form__error')[0].innerHTML);
+            document.getElementsByClassName('form__error')[0].innerHTML = errorText;
+            console.log('and now after', document.getElementsByClassName('form__error')[0].innerHTML)
+        }
     }
 
     function submitArtistForm(data) {
         let errorText = '';
-        let backendError = '';
 
         // Here where shit code starts. I don't know which input it will be, but it will be either 0 or 1 
         // depends if festivals form open
@@ -126,18 +127,16 @@ function AdminDashboard(props) {
                 name: data.name,
             })
                 .then(res => axios.get(ArtistsUrl).then((res) => { setArtists(res.data) }))
-                .catch((error) => { console.log(error); backendError = 'Ooops something went wrong' })
+                .catch(() => { document.getElementsByClassName('form__error')[idx].innerHTML = 'Ooops something went wrong' })
             handleToggleForm(ArtistsTitle);
         }
         else {
             document.getElementsByClassName('form__error')[idx].innerHTML = errorText
         }
-        document.getElementsByClassName('form__error')[idx].innerHTML = backendError
     }
 
     function submitPlaylistForm(data) {
         let errorText = '';
-        let backendError = '';
         // Some more code i'm not proud of. this input always will be the last one
         let idx = document.getElementsByClassName('form__error').length - 1;
 
@@ -156,7 +155,7 @@ function AdminDashboard(props) {
                     axios.get(PlaylistsUrl).then((res) => { setPlaylists(res.data) });
                     handleToggleForm(PlaylistsTitle);
                 })
-                .catch((error) => { console.log(error); backendError = 'Ooops something went wrong' })
+                .catch(() => { document.getElementsByClassName('form__error')[idx].innerHTML = 'Ooops something went wrong' })
             setPlaylistBase({
                 'festivalId': null,
                 'artists': []
@@ -165,7 +164,6 @@ function AdminDashboard(props) {
         else {
             document.getElementsByClassName('form__error')[idx].innerHTML = errorText
         }
-        document.getElementsByClassName('form__error')[idx].innerHTML = backendError
     }
 
     return (
