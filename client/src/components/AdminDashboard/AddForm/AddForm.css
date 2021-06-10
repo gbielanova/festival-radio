@@ -23,3 +23,7 @@
 .form__input:focus {
   background-color: white;
 }
+
+.form__error {
+  color: red;
+}

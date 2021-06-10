@@ -85,36 +85,63 @@ function AdminDashboard(props) {
     }
 
     function submitFestivalForm(data) {
-        axios.post(FestivalsUrl, {
-            name: data.name,
-            logo_url: data.logo_url
-        })
-            .then(res => axios.get(FestivalsUrl).then((res) => { setFestivals(res.data) }))
-        handleToggleForm(FestivalsTitle);
+        let errorText = '';
+        let formatError = null;
+        (!data.name) && (errorText += `Please enter name <br>`);
+        if (!data.logo_url) errorText += 'Please enter url for logo'
+        else {
+            ['http', '.jpg', '.png', 'svg'].forEach(
+                (el) => { (!data.logo_url.includes(el)) && (formatError = 1) });
+            (formatError) && (errorText += 'Please enter valid url, file format should be jpg, svg or png.')
+        }
+
+        if (errorText === '') {
+            axios.post(FestivalsUrl, {
+                name: data.name,
+                logo_url: data.logo_url
+            })
+                .then(res => axios.get(FestivalsUrl).then((res) => { setFestivals(res.data) }));
+            handleToggleForm(FestivalsTitle)
+        }
+        else { document.getElementsByClassName('form__error')[0].innerHTML = errorText }
     }
 
-    function submitArtistForm(name) {
-        console.log(name);
-        axios.post(ArtistsUrl, {
-            name: name,
-        })
-            .then(res => axios.get(ArtistsUrl).then((res) => { setArtists(res.data) }))
-        handleToggleForm(ArtistsTitle);
+    function submitArtistForm(data) {
+        let errorText = '';
+        (!data.name) && (errorText += 'Please enter name');
+
+        if (errorText === '') {
+            axios.post(ArtistsUrl, {
+                name: data.name,
+            })
+                .then(res => axios.get(ArtistsUrl).then((res) => { setArtists(res.data) }))
+            handleToggleForm(ArtistsTitle);
+        }
+        else { document.getElementsByClassName('form__error')[1].innerHTML = errorText }
     }
 
-    function submitPlaylistForm(name) {
-        axios.post(PlaylistsUrl, {
-            festival_id: playlistBase.festivalId,
-            artists: playlistBase.artists.join(','),
-            name: name,
-            spotify_token: accessToken
-        })
-            .then(res => axios.get(PlaylistsUrl).then((res) => { setPlaylists(res.data) }))
-        handleToggleForm(PlaylistsTitle);
-        setPlaylistBase({
-            'festivalId': null,
-            'artists': []
-        })
+    function submitPlaylistForm(data) {
+        let errorText = '';
+        (!data.name) && (errorText += `Please enter name <br>`);
+        (!playlistBase.festivalId || playlistBase.artists.length === 0) &&
+            (errorText += 'Please select Festival and Artists');
+
+        if (errorText === '') {
+            axios.post(PlaylistsUrl, {
+                festival_id: playlistBase.festivalId,
+                artists: playlistBase.artists.join(','),
+                name: data.name,
+                spotify_token: accessToken
+            })
+                .then(res => axios.get(PlaylistsUrl).then((res) => { setPlaylists(res.data) }))
+            handleToggleForm(PlaylistsTitle);
+            setPlaylistBase({
+                'festivalId': null,
+                'artists': []
+            })
+        }
+        else { document.getElementsByClassName('form__error')[2].innerHTML = errorText }
+
     }
 
     return (
