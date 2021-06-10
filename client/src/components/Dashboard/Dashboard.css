@@ -27,3 +27,10 @@
     flex: 0.91;
   }
 }
+
+@media only screen and (min-width: 1800px) {
+  .dashboard {
+    padding-left: 7%;
+    background-color: #040404;
+  }
+}

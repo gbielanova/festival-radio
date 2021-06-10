@@ -2,11 +2,17 @@
   padding-top: 50px;
   color: #b3b3b3;
   overflow: scroll;
-  overflow: scroll;
+  height: 90vh;
 }
 
 .gallery__items {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
+}
+
+@media only screen and (min-width: 1440px) {
+  .gallery {
+    padding-right: 15%;
+  }
 }
