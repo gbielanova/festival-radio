@@ -5,6 +5,7 @@ import SidebarItem from '../SidebarItem/SidebarItem';
 import spotifyLogo from '../../../resources/img/spotifyLogo.svg';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import HomeIcon from '@material-ui/icons/Home';
+import MenuIcon from '@material-ui/icons/Menu';
 
 const MaxWidth = 768;
 
@@ -39,26 +40,37 @@ function Sidebar() {
 
     return (
         <aside className={`sidebar ${isMobile ? 'mobile' : ''}`} onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}>
-            <header className='sidebar__header'>
-                <div className="sidebar__logos">
-                    <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
-                    <img className='sidebar__logo' src={festival.logo_url} alt="Festival logo"></img>
-                </div>
-                <SidebarItem title="Home" Icon={HomeIcon} onClick={handleClick} />
-            </header>
+            {
+                ((window.innerWidth <= MaxWidth) && !isMobile)
+                    ?
+                    <MenuIcon fontSize="large" className='sidebar__burger' />
+                    :
+                    <>
+                        <header className='sidebar__header'>
+                            <div className="sidebar__logos">
+                                <img className='sidebar__logo' src={spotifyLogo} alt="Spotify logo"></img>
+                                <img className='sidebar__logo' src={festival.logo_url} alt="Festival logo"></img>
+                            </div>
+                            <SidebarItem title="Home" Icon={HomeIcon} onClick={handleClick} />
+                        </header>
 
-            <h3 className='sidebar__title'>FAVORITE</h3>
-            {playlists?.map(playlist => (
-                favorites.indexOf(playlist.id) !== -1 &&
-                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} cName='sidebarItem-favorite' />
-            ))}
+                        <h3 className='sidebar__title'>FAVORITE</h3>
+                        {
+                            playlists?.map(playlist => (
+                                favorites.indexOf(playlist.id) !== -1 &&
+                                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} cName='sidebarItem-favorite' />
+                            ))
+                        }
 
-            <h3 className='sidebar__title'>PLAYLISTS</h3>
-            { playlists?.map(playlist => (
-                favorites.indexOf(playlist.id) === -1 &&
-                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} />
-            ))}
-
+                        <h3 className='sidebar__title'>PLAYLISTS</h3>
+                        {
+                            playlists?.map(playlist => (
+                                favorites.indexOf(playlist.id) === -1 &&
+                                < SidebarItem playlist={playlist} key={playlist.id} choosePlaylist={choosePlaylist} Favorite={FavoriteIcon} />
+                            ))
+                        }
+                    </>
+            }
         </aside>
     );
 }

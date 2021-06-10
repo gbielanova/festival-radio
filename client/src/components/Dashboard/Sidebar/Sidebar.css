@@ -40,26 +40,13 @@
 @media only screen and (max-width: 768px) {
   .sidebar {
     flex: 0.15;
-  }
-
-  .sidebar__logos,
-  .sidebar__header,
-  .sidebar__title {
-    display: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .mobile.sidebar {
     flex: 100vw;
-  }
-
-  .mobile.sidebar .sidebar__logos,
-  .mobile.sidebar .sidebar__header,
-  .mobile.sidebar .sidebar__title,
-  .mobile.sidebar .sidebarItem {
-    display: flex;
-  }
-
-  .mobile.sidebar .sidebar__header {
-    flex-direction: column;
+    display: block;
   }
 }
