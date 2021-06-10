@@ -86,13 +86,13 @@ function AdminDashboard(props) {
 
     function submitFestivalForm(data) {
         let errorText = '';
-        let formatError = null;
+        let formatError = 0;
         (!data.name) && (errorText += `Please enter name <br>`);
         if (!data.logo_url) errorText += 'Please enter url for logo'
         else {
             ['http', '.jpg', '.png', 'svg'].forEach(
-                (el) => { (!data.logo_url.includes(el)) && (formatError = 1) });
-            (formatError) && (errorText += 'Please enter valid url, file format should be jpg, svg or png.')
+                (el) => { (!data.logo_url.includes(el)) && (formatError += 1) });
+            (formatError !== 2) && (errorText += 'Please enter valid url, file format should be jpg, svg or png.')
         }
 
         if (errorText === '') {
@@ -117,7 +117,13 @@ function AdminDashboard(props) {
                 .then(res => axios.get(ArtistsUrl).then((res) => { setArtists(res.data) }))
             handleToggleForm(ArtistsTitle);
         }
-        else { document.getElementsByClassName('form__error')[1].innerHTML = errorText }
+        else {
+            // Here where shit code starts. I don't know which input it will be, but it will be either 0 or 1 
+            // depends if festivals form open
+            let idx = 0;
+            (document.getElementsByClassName('form__error').length > 1) && (idx = 1);
+            document.getElementsByClassName('form__error')[idx].innerHTML = errorText
+        }
     }
 
     function submitPlaylistForm(data) {
@@ -140,7 +146,11 @@ function AdminDashboard(props) {
                 'artists': []
             })
         }
-        else { document.getElementsByClassName('form__error')[2].innerHTML = errorText }
+        else {
+            // Some more code i'm not proud of. this input always will be the last one
+            let idx = document.getElementsByClassName('form__error').length - 1;
+            document.getElementsByClassName('form__error')[idx].innerHTML = errorText
+        }
 
     }
 

@@ -16,6 +16,7 @@
   transition: 200ms ease-in;
   cursor: pointer;
   font-size: 16px;
+  text-transform: uppercase;
 }
 
 .printData__element:hover {

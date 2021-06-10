@@ -48,6 +48,28 @@ function Dashboard() {
 
         spotifyApi.setAccessToken(accessToken);
 
+        function logout() {
+            dispatch({
+                type: "SET_ACCESS_TOKEN",
+                user: null,
+            });
+            dispatch({
+                type: "SET_REFRESH_TOKEN",
+                user: null,
+            });
+            dispatch({
+                type: "SET_EXPIRES_IN",
+                user: null,
+            });
+            dispatch({
+                type: "SET_FESTIVAL",
+                user: null,
+            });
+            sessionStorage.setItem('loggedIn', false);
+            sessionStorage.removeItem('token');
+            sessionStorage.removeItem('selectedFestival');
+        }
+
         spotifyApi.getMe().then(res => {
             dispatch({
                 type: "SET_USER",
@@ -60,7 +82,7 @@ function Dashboard() {
                     premium: true,
                 });
             }
-        });
+        }).catch((error) => { console.log(error); logout() });
 
         axios.get(PlaylistsUrl)
             .then(res => {
@@ -80,7 +102,7 @@ function Dashboard() {
                                 image: res.body.images[0].url,
                             },
                         });
-                    })
+                    }).catch((error) => { console.log(error); logout() })
                 ));
             }
             )

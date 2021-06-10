@@ -13,7 +13,6 @@ function App() {
   return (
     (sessionStorage.getItem('state') === 'admin') ? <AdminDashboard /> :
       festival ? <Dashboard /> : <Festivals />
-
   )
 
 }

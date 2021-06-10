@@ -11,6 +11,10 @@ function useAuth(code) {
     const [{ accessToken, refreshToken, expiresIn }, dispatch] = useDataLayerValue();
 
     useEffect(() => {
+        console.log('call login with ', code);
+
+        if (accessToken) return;
+
         axios.post(serverLoginURL, {
             code,
         })
@@ -32,12 +36,16 @@ function useAuth(code) {
                 sessionStorage.setItem('loggedIn', true);
                 sessionStorage.setItem('token', res.data.accessToken);
             })
-    }, [code, dispatch]);
+    }, [accessToken, code, dispatch]);
 
     useEffect(() => {
         if (!refreshToken || !expiresIn) return;
 
+        console.log('interval will be started');
+
         const interval = setInterval(() => {
+            console.log('interval started');
+
             axios.post(serverRefreshURL, {
                 refreshToken,
             })
