@@ -23,6 +23,7 @@
 
 .form__button:focus,
 .form__input:focus {
+  -webkit-box-shadow: 0 4px 40px white;
   box-shadow: 0 4px 40px white;
   outline: none;
 }

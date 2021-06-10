@@ -1,5 +1,9 @@
 .songRow {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   color: white;
   margin: 5px 0;
@@ -10,12 +14,14 @@
   cursor: pointer;
   background-color: black;
   opacity: 0.8;
+  -webkit-box-shadow: 0 4px 60px black;
   box-shadow: 0 4px 60px black;
 }
 
 .songRow:focus {
   opacity: 0.8;
   background-color: black;
+  -webkit-box-shadow: 0 4px 60px black;
   box-shadow: 0 4px 60px black;
   outline: none;
 }

@@ -7,20 +7,35 @@
 }
 
 .main__info {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   height: 20vh;
   min-height: 150px;
   padding: 10px;
+  position: -webkit-sticky;
   position: sticky;
   top: 0;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgb(91, 87, 115)),
+    to(rgb(26, 25, 25))
+  );
+  background: -o-linear-gradient(rgb(91, 87, 115), rgb(26, 25, 25));
   background: linear-gradient(rgb(91, 87, 115), rgb(26, 25, 25));
+  -webkit-box-shadow: 0 4px 60px black;
   box-shadow: 0 4px 60px black;
   z-index: 1;
 }
 
 .main__logo {
   height: 100%;
+  -webkit-box-shadow: 0 4px 60px black;
   box-shadow: 0 4px 60px black;
 }
 
@@ -39,12 +54,25 @@
 
 .main__songs {
   padding: 10px;
+  background: -webkit-gradient(
+    linear,
+    left top,
+    left bottom,
+    from(rgb(54, 52, 65)),
+    to(rgb(26, 25, 25))
+  );
+  background: -o-linear-gradient(rgb(54, 52, 65), rgb(26, 25, 25));
   background: linear-gradient(rgb(54, 52, 65), rgb(26, 25, 25));
 }
 
 @media only screen and (max-width: 424px) {
   .main__info {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
     flex-direction: column;
+    -webkit-box-align: start;
+    -ms-flex-align: start;
     align-items: flex-start;
   }
 

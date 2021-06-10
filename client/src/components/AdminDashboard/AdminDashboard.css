@@ -14,16 +14,22 @@
   font-size: 16px;
   cursor: pointer;
   margin-bottom: 20px;
+  -webkit-transition: 200ms ease-in;
+  -o-transition: 200ms ease-in;
   transition: 200ms ease-in;
 }
 
 .admin__button:hover {
+  -webkit-transform: translateX(10px) scale(1.2);
+  -ms-transform: translateX(10px) scale(1.2);
   transform: translateX(10px) scale(1.2);
   color: white;
   font-weight: bold;
 }
 
 .admin__button:focus {
+  -webkit-transform: translateX(10px) scale(1.2);
+  -ms-transform: translateX(10px) scale(1.2);
   transform: translateX(10px) scale(1.2);
   text-shadow: 0 4px 40px white;
   color: white;
@@ -32,8 +38,14 @@
 }
 
 .admin__header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
   justify-content: space-between;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
 }
 

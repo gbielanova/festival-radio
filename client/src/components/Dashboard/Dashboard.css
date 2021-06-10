@@ -3,7 +3,10 @@
 }
 
 .dashboard {
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   height: 100vh;
   min-height: 500px;
@@ -11,6 +14,8 @@
 }
 
 .main__wrapper {
+  -webkit-box-flex: 0.7;
+  -ms-flex: 0.7;
   flex: 0.7;
   overflow: scroll;
   background-color: #121212;
@@ -24,6 +29,8 @@
 
 @media only screen and (max-width: 768px) {
   .main__wrapper {
+    -webkit-box-flex: 0.85;
+    -ms-flex: 0.85;
     flex: 0.85;
   }
 }
