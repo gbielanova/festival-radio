@@ -45,27 +45,35 @@ function AdminDashboard(props) {
     }
 
     function handleFestivalClick(item) {
+        let newId = null;
+        (item.id !== playlistBase.festivalId) && (newId = item.id);
         setPlaylistBase({
-            'festivalId': item.id,
+            'festivalId': newId,
             'artists': [...playlistBase.artists],
             'playlistId': null,
         })
     }
 
     function handleArtistClick(item) {
-        (playlistBase.artists.indexOf(item.id) === -1) &&
-            setPlaylistBase({
-                'festivalId': playlistBase.festivalId,
-                'artists': [...playlistBase.artists, item.id],
-                'playlistId': null,
-            })
+        let newArtists = [...playlistBase.artists];
+        (playlistBase.artists.indexOf(item.id) === -1)
+            ? newArtists.push(item.id)
+            : newArtists.splice(playlistBase.artists.indexOf(item.id), 1)
+
+        setPlaylistBase({
+            'festivalId': playlistBase.festivalId,
+            'artists': newArtists,
+            'playlistId': null,
+        })
     }
 
     function handlePlaylistClick(item) {
+        let newId = null;
+        (item.id !== playlistBase.playlistId) && (newId = item.id);
         setPlaylistBase({
             'festivalId': item.festival_id,
             'artists': item.artists.split(',').map((el) => +el),
-            'playlistId': item.id,
+            'playlistId': newId,
         })
     }
 
