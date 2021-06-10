@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Sidebar.css';
 import { useDataLayerValue } from '../../../DataLayer';
 import SidebarItem from '../SidebarItem/SidebarItem';
@@ -12,6 +12,27 @@ const MaxWidth = 768;
 function Sidebar() {
     const [{ playlists, favorites, festival }, dispatch] = useDataLayerValue();
     const [isMobile, setIsMobile] = useState(false);
+    const [dimensions, setDimensions] = useState({
+        height: window.innerHeight,
+        width: window.innerWidth
+    });
+
+    useEffect(() => {
+        function handleResize() {
+            setDimensions({
+                height: window.innerHeight,
+                width: window.innerWidth
+            })
+
+        }
+
+        window.addEventListener('resize', handleResize)
+
+        return _ => {
+            window.removeEventListener('resize', handleResize)
+
+        }
+    })
 
     function choosePlaylist(playlist) {
         dispatch({
