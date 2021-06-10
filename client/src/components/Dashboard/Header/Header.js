@@ -10,7 +10,7 @@ function Header({ handleClick }) {
 
     return (
         <header className='header' >
-            <div className="header__wrapper">
+            <div className="header__wrapper" tabIndex={0}>
                 <Avatar src={user?.images[0]?.url} alt={user?.display_name} />
                 <p className='header__text'>{user?.display_name}</p>
                 <ExitToAppIcon className='header__logout' onClick={handleClick} />

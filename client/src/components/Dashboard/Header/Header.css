@@ -5,12 +5,19 @@
   z-index: 2;
 }
 
-.header:hover .header__logout {
+.header:hover .header__logout,
+.header__wrapper:focus .header__logout {
   display: block !important;
   margin-right: 10px;
   margin-left: auto;
   cursor: pointer;
   z-index: 2;
+}
+
+.header__wrapper:focus,
+.header__logout:focus {
+  box-shadow: 0 4px 40px white;
+  outline: none;
 }
 
 .header__wrapper {

@@ -28,11 +28,11 @@ function SidebarItem({ title, playlist, Icon, choosePlaylist, Favorite, cName, o
     let activePlaylist = (playingPlaylist === playlist);
 
     return (
-        <div className={`sidebarItem ${activePlaylist ? 'sidebarItem-active' : ''}`} >
+        <div className={`sidebarItem ${activePlaylist ? 'sidebarItem-active' : ''}`} tabIndex={0}>
             {activePlaylist && <AudiotrackIcon />}
             {Icon && <Icon className='sidebarItem__icon' />}
             {Icon ? <h4 className='sidebarItem__title sidebarItem__text' onClick={onClick}>{title}</h4> : <p className='sidebarItem__text' onClick={handlePlaylistClick}>{playlist.name}</p>}
-            {Favorite && <Favorite className={`sidebarItem__favorite ${cName || ''}`} onClick={handleFavoriteClick} />}
+            {Favorite && <Favorite className={`sidebarItem__favorite ${cName || ''}`} onClick={handleFavoriteClick} tabIndex={0} />}
         </div>
     );
 }

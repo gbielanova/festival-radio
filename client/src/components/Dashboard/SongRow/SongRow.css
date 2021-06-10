@@ -13,6 +13,13 @@
   box-shadow: 0 4px 60px black;
 }
 
+.songRow:focus {
+  opacity: 0.8;
+  background-color: black;
+  box-shadow: 0 4px 60px black;
+  outline: none;
+}
+
 .songRow__img {
   height: 50px;
 }

@@ -19,7 +19,7 @@ function GalleryItem({ playlist }) {
     }
 
     return (
-        <div className='galleryItem' onClick={handleClick}>
+        <div className='galleryItem' onClick={handleClick} tabIndex={0}>
             <img src={playlist.image} alt="Playlist cover" className="galleryItem__img" />
             <p className="galleryItem__name">{playlist.name}</p>
             <p className="galleryItem__description">{playlist.description}</p>
