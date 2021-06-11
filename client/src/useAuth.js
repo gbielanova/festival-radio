@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import axios from 'axios';
 import { useDataLayerValue } from './DataLayer';
 
-
-const serverLoginURL = 'http://localhost:3001/login';
-const serverRefreshURL = 'http://localhost:3001/refresh';
+const serverLoginURL = 'http://52.51.232.161:3001/login';
+const serverRefreshURL = 'http://52.51.232.161:3001/refresh';
+// const serverLoginURL = 'http://localhost:3001/login';
+// const serverRefreshURL = 'http://localhost:3001/refresh';
 
 function useAuth(code) {
     const [{ accessToken, refreshToken, expiresIn }, dispatch] = useDataLayerValue();

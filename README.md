@@ -21,6 +21,12 @@ Responsible for refresh token.
 0. First run: run command **npm install**
 1. run command **npm run devStart**
 
+#### Run on AWS
+0. First run: copy instance IPv4 address and update useAuth.js to listen it
+1. Connect by **ssh** to EC2
+2. Go to work folder `cd /usr/local/apps/festival-radio/server`
+3. Run update script **npm run devStart**
+
 ### API
 Django app.
 Responsible for communication with database.
