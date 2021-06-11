@@ -11,7 +11,7 @@ const MaxWidth = 768;
 
 function Sidebar() {
     const [{ playlists, favorites, festival }, dispatch] = useDataLayerValue();
-    const [isMobile, setIsMobile] = useState(false);
+    const [isSidebarVisibleMobile, setIsSidebarVisibleMobile] = useState(false);
     const [dimensions, setDimensions] = useState({
         height: window.innerHeight,
         width: window.innerWidth
@@ -25,12 +25,9 @@ function Sidebar() {
             })
 
         }
-
         window.addEventListener('resize', handleResize)
-
         return _ => {
             window.removeEventListener('resize', handleResize)
-
         }
     })
 
@@ -43,7 +40,6 @@ function Sidebar() {
             type: "SET_PLAYING_TRACK",
             playingTrack: playlist.tracks.items[0].track,
         });
-        setIsMobile(false);
     }
 
     function handleClick() {
@@ -52,17 +48,17 @@ function Sidebar() {
             festival: null,
         });
         sessionStorage.removeItem('selectedFestival');
-        setIsMobile(false);
     }
 
-    function handleTouchStart() {
-        (window.innerWidth <= MaxWidth) ? setIsMobile(true) : setIsMobile(false);
+    function handleSidebarMobileClick() {
+        (window.innerWidth <= MaxWidth) ? setIsSidebarVisibleMobile(true) : setIsSidebarVisibleMobile(false);
+        (isSidebarVisibleMobile) && setIsSidebarVisibleMobile(false);
     }
 
     return (
-        <aside className={`sidebar ${isMobile ? 'mobile' : ''}`} onTouchStart={touchStartEvent => handleTouchStart(touchStartEvent)}>
+        <aside className={`sidebar ${isSidebarVisibleMobile ? 'mobile' : ''}`} onClick={event => handleSidebarMobileClick(event)}>
             {
-                ((window.innerWidth <= MaxWidth) && !isMobile)
+                ((window.innerWidth <= MaxWidth) && !isSidebarVisibleMobile)
                     ?
                     <MenuIcon fontSize="large" className='sidebar__burger' />
                     :
