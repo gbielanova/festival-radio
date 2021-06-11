@@ -19,7 +19,7 @@ const spotifyApi = new SpotifyWebApi({
 });
 
 function Dashboard() {
-    const [{ accessToken, playingPlaylist, festival }, dispatch] = useDataLayerValue();
+    const [{ accessToken, playingPlaylist, festival, playlists }, dispatch] = useDataLayerValue();
 
     function handleClick() {
         dispatch({
@@ -91,17 +91,19 @@ function Dashboard() {
                     .map((el) => el.playlist_id);
                 ids.map(id => (
                     spotifyApi.getPlaylist(id).then(res => {
-                        dispatch({
-                            type: "SET_PLAYLISTS",
-                            playlist: {
-                                description: res.body.description,
-                                name: res.body.name,
-                                id: res.body.id,
-                                href: res.body.href,
-                                tracks: res.body.tracks,
-                                image: res.body.images[0].url,
-                            },
-                        });
+                        let currentPlaylists = playlists.map((el) => el.id);
+                        (currentPlaylists.indexOf(id) === -1) &&
+                            dispatch({
+                                type: "SET_PLAYLISTS",
+                                playlist: {
+                                    description: res.body.description,
+                                    name: res.body.name,
+                                    id: res.body.id,
+                                    href: res.body.href,
+                                    tracks: res.body.tracks,
+                                    image: res.body.images[0].url,
+                                },
+                            });
                     }).catch((error) => { console.log(error); logout() })
                 ));
             }
