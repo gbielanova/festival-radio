@@ -74,6 +74,20 @@
     -webkit-box-align: start;
     -ms-flex-align: start;
     align-items: flex-start;
+    width: 100%;
+  }
+
+  .main__infoText {
+    margin-left: 20px;
+    width: 90%;
+  }
+
+  .main__name {
+    width: 90%;
+    white-space: nowrap;
+    overflow: hidden;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
   }
 
   .main__logo {

@@ -60,7 +60,7 @@ function Sidebar() {
             {
                 ((window.innerWidth <= MaxWidth) && !isSidebarVisibleMobile)
                     ?
-                    <MenuIcon fontSize="large" className='sidebar__burger' />
+                    <MenuIcon fontSize="large" className='sidebar__burger' tabIndex={0} />
                     :
                     <>
                         <header className='sidebar__header'>

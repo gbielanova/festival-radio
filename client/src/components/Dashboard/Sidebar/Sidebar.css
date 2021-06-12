@@ -66,4 +66,21 @@
     flex: 100vw;
     display: block;
   }
+
+  .sidebar:hover {
+    cursor: pointer;
+  }
+
+  .sidebar:hover .sidebar__burger {
+    background-color: rgba(46, 45, 45, 0.404);
+    color: white;
+    cursor: pointer;
+  }
+
+  .sidebar:focus .sidebar__burger,
+  .sidebar__burger:focus {
+    -webkit-box-shadow: 0 4px 40px white;
+    box-shadow: 0 4px 40px white;
+    outline: none;
+  }
 }
