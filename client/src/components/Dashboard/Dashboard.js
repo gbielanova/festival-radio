@@ -39,7 +39,10 @@ function Dashboard() {
             user: null,
         });
         sessionStorage.setItem('loggedIn', false);
+        sessionStorage.removeItem('state');
         sessionStorage.removeItem('token');
+        sessionStorage.removeItem('refreshToken');
+        sessionStorage.removeItem('expiresIn');
         sessionStorage.removeItem('selectedFestival');
     }
 

@@ -31,6 +31,8 @@ function useAuth(code) {
                 window.history.pushState({}, null, '/');
                 sessionStorage.setItem('loggedIn', true);
                 sessionStorage.setItem('token', res.data.accessToken);
+                sessionStorage.setItem('refreshToken', res.data.refreshToken);
+                sessionStorage.setItem('expiresIn', res.data.expiresIn);
             })
             .catch(() => {
                 window.location = '/';
@@ -45,6 +47,8 @@ function useAuth(code) {
                 refreshToken,
             })
                 .then(res => {
+                    console.log('here is response', res);
+
                     dispatch({
                         type: "SET_ACCESS_TOKEN",
                         accessToken: res.data.accessToken,
@@ -53,9 +57,13 @@ function useAuth(code) {
                         type: "SET_EXPIRES_IN",
                         expiresIn: res.data.expiresIn,
                     });
+                    console.log('new token');
                     sessionStorage.setItem('token', res.data.accessToken);
                 })
                 .catch(() => {
+                    sessionStorage.removeItem('token');
+                    sessionStorage.removeItem('refreshToken');
+                    sessionStorage.removeItem('expiresIn');
                     window.location = '/';
                 });
         }, (expiresIn - 60) * 1000);
