@@ -1,8 +1,22 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import './PrintData.css'
 import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 function PrintData({ title, selectedData, data, onClick, openForm }) {
+    const [dataToShow, setDataToShow] = useState([]);
+    const [showAll, setShowAll] = useState(false);
+
+    useEffect(() => {
+        if (showAll) { setDataToShow([...data]); }
+        else {
+            let newData = [];
+            let maxIndex = (data.length > 10) ? 10 : data.length;
+            for (let i = 0; i < maxIndex; i++) {
+                newData.push(data[i]);
+            }
+            setDataToShow([...newData]);
+        }
+    }, [data, showAll]);
 
     function getClasses(id) {
         let classes = '';
@@ -13,13 +27,20 @@ function PrintData({ title, selectedData, data, onClick, openForm }) {
         return classes;
     }
 
+    function handleShowMore() {
+        setShowAll(!showAll);
+    }
+
     return (
         <section className='printData'>
             <header className='printData__header'>{title}</header>
+
+            {(data.length > 10) && <button className="printData__button" onClick={handleShowMore}>{showAll ? 'Show first 10' : 'Show all'}</button>}
+
             <div className="printData__body">
-                {data.map(
+                {dataToShow?.map(
                     (item) =>
-                        <p className={getClasses(item.id)} key={item.id} onClick={() => onClick(item)} tabIndex={0}>{item.name}</p>
+                        <p className={getClasses(item?.id)} key={item?.id} onClick={() => onClick(item)} tabIndex={0}>{item?.name}</p>
                 )}
                 <AddCircleIcon fontSize="large" className='printData__add' onClick={() => openForm(title)} tabIndex={0} /></div>
         </section>

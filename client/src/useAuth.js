@@ -60,11 +60,12 @@ function useAuth(code) {
                     console.log('new token');
                     sessionStorage.setItem('token', res.data.accessToken);
                 })
-                .catch(() => {
+                .catch((err) => {
                     sessionStorage.removeItem('token');
                     sessionStorage.removeItem('refreshToken');
                     sessionStorage.removeItem('expiresIn');
-                    window.location = '/';
+                    console.log(err);
+                    // window.location = '/';
                 });
         }, (expiresIn - 60) * 1000);
 

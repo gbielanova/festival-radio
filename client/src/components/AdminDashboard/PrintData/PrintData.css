@@ -74,3 +74,28 @@
   background-color: white;
   color: black;
 }
+
+.printData__button {
+  background-color: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.printData__button:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  -webkit-transform: translateX(10px) scale(1.2);
+  -ms-transform: translateX(10px) scale(1.2);
+  transform: translateX(10px) scale(1.2);
+  text-shadow: 0 4px 40px white;
+}
+
+.printData__button:focus {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+  text-shadow: 0 4px 40px white;
+  outline: none;
+}
