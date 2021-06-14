@@ -58,7 +58,7 @@ function Sidebar() {
     return (
         <aside className={`sidebar ${isSidebarVisibleMobile ? 'mobile' : ''}`} onClick={event => handleSidebarMobileClick(event)}>
             {
-                ((window.innerWidth <= MaxWidth) && !isSidebarVisibleMobile)
+                ((dimensions.width <= MaxWidth) && !isSidebarVisibleMobile)
                     ?
                     <MenuIcon fontSize="large" className='sidebar__burger' tabIndex={0} />
                     :
