@@ -1,4 +1,5 @@
-const redirectUri = 'http://localhost:3000/';
+// const redirectUri = 'http://localhost:3000/';
+const redirectUri = 'http://52.51.232.161:3000/';
 const clientId = 'afa5c44e65bc40928f489b6bff9d91fe';
 
 const scopes = [
