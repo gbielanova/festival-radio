@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/festival-radio/static/css/main.ed52c032.chunk.css",
+    "main.js": "/festival-radio/static/js/main.3fc1239a.chunk.js",
+    "main.js.map": "/festival-radio/static/js/main.3fc1239a.chunk.js.map",
+    "runtime-main.js": "/festival-radio/static/js/runtime-main.3106b771.js",
+    "runtime-main.js.map": "/festival-radio/static/js/runtime-main.3106b771.js.map",
+    "static/js/2.0f8d0565.chunk.js": "/festival-radio/static/js/2.0f8d0565.chunk.js",
+    "static/js/2.0f8d0565.chunk.js.map": "/festival-radio/static/js/2.0f8d0565.chunk.js.map",
+    "index.html": "/festival-radio/index.html",
+    "static/css/main.ed52c032.chunk.css.map": "/festival-radio/static/css/main.ed52c032.chunk.css.map",
+    "static/js/2.0f8d0565.chunk.js.LICENSE.txt": "/festival-radio/static/js/2.0f8d0565.chunk.js.LICENSE.txt",
+    "static/media/Festivals.css": "/festival-radio/static/media/back.850c7ec9.jpg",
+    "static/media/spotifyLogo.4f8bc335.svg": "/festival-radio/static/media/spotifyLogo.4f8bc335.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.3106b771.js",
+    "static/js/2.0f8d0565.chunk.js",
+    "static/css/main.ed52c032.chunk.css",
+    "static/js/main.3fc1239a.chunk.js"
+  ]
+}
